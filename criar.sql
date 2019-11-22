@@ -22,7 +22,7 @@ CREATE TABLE MESSAGES(
     idSend   INTEGER REFERENCES USER (idUser),
     idReceive   INTEGER REFERENCES USER (idUser),
     date DATE,
-    text TEXT,
+    text TEXT NOT NULL,
     PRIMARY KEY(idMessages, idSend, idReceive)
 );
 
@@ -32,14 +32,25 @@ CREATE TABLE IF NOT EXISTS LOCATION (
     city       TEXT  NOT NULL,
     country    TEXT  NOT NULL
 );
-/*
+
 DROP TABLE IF EXISTS COMMENTS;
 CREATE TABLE IF NOT EXISTS COMMENTS (
     idComments INTEGER PRIMARY KEY,
+    idProperty   INTEGER REFERENCES PROPERTY (idProperty),
+    idUser   INTEGER REFERENCES USER (idUser),
     date DATE,
     text TEXT
 );
-*/
+
+DROP TABLE IF EXISTS PHOTO;
+CREATE TABLE IF NOT EXISTS PHOTO (
+    idPhoto INTEGER PRIMARY KEY,
+    idProperty   INTEGER REFERENCES PROPERTY (idProperty),
+    uploadDate DATE,
+    name TEXT,
+    photo BLOB
+);
+
 DROP TABLE IF EXISTS RENT;
 CREATE TABLE IF NOT EXISTS RENT (
     idRent INTEGER PRIMARY KEY,
@@ -52,3 +63,13 @@ CREATE TABLE IF NOT EXISTS RENT (
     price NUMERIC NOT NULL
 );
 
+DROP TABLE IF EXISTS PROPERTY;
+CREATE TABLE IF NOT EXISTS PROPERTY (
+    idProperty INTEGER PRIMARY KEY,
+    idOwner   INTEGER REFERENCES OWNER (idOwner),
+    address TEXT,
+    title TEXT,
+    price FLOAT,
+    description TEXT,
+    rate NUMERIC
+);
