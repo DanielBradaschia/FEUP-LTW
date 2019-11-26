@@ -7,13 +7,8 @@ CREATE TABLE USER(
     gender CHAR CHECK (gender == 'F' OR gender == 'f' OR gender == 'M' OR gender == 'm'),
     birthdate DATE,
     cellphone INTEGER,
-    profilePicture BLOB
-);
-
-DROP TABLE IF EXISTS OWNER;
-CREATE TABLE OWNER(
-    idUser INTEGER REFERENCES USER (idUser),
-    idOwner INTEGER PRIMARY KEY
+    profilePicture BLOB,
+    type TEXT CHECK (type == 'Owner' OR type == 'Tourist')
 );
 
 DROP TABLE IF EXISTS MESSAGES;
@@ -66,7 +61,6 @@ CREATE TABLE IF NOT EXISTS RENT (
 DROP TABLE IF EXISTS PROPERTY;
 CREATE TABLE IF NOT EXISTS PROPERTY (
     idProperty INTEGER PRIMARY KEY,
-    idOwner   INTEGER REFERENCES OWNER (idOwner),
     address TEXT,
     title TEXT,
     price FLOAT,
