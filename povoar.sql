@@ -9,7 +9,7 @@ INSERT INTO USER (idUser, name, password, email, gender, birthdate, cellphone, p
 
 INSERT INTO MESSAGES (idMessages, idSend, idReceive, date, text) VALUES (1, 1, 2, '2019-09-13', 'Olá');
 
-INSERT INTO PROPERTY (idProperty, address, title, price, description, rate) VALUES (1, 'Rua do Amial', 'Quarto', 75.00, 'Um quarto', 0);
+INSERT INTO PROPERTY (idProperty, idOwner, address, title, price, description, rate) VALUES (1, 1, 'Rua do Amial', 'Quarto', 75.00, 'Um quarto', 0);
 
 INSERT INTO COMMENTS (idComments, idProperty, idUser, date, text) VALUES (1, 1, 2, '2019-09-13', 'Realmente é um quarto');
 
