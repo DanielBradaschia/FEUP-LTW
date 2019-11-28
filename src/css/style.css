@@ -983,19 +983,30 @@ Quick Services
   border: 2px solid #34495E;
   width: 128px;
   height: 128px;
-  display: inline-block; }
-  .img-item img {
-    object-fit: cover; }
+  display: inline-block;
+}
+
+.img-item img {
+  object-fit: cover;
+}
 
 .uploadPhotoProfile {
   display: inline-block;
-  padding-top: 40px; }
+  padding-top: 30px; 
+}
 
 .profileCenter {
   padding-top: 30px;
   margin: 0 auto;
   width: 50%;
-  text-align: center; }
+  text-align: center; 
+}
+
+.profileCenter > h1{
+  font-family: "Andale Mono", monospace;
+  color: #34495e;
+}
+
 
 .editProfileForm {
   max-width: 500px;
@@ -1003,7 +1014,8 @@ Quick Services
   background: transparent;
   border-radius: 2px;
   padding: 20px;
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family:  "Andale Mono", monospace; 
+}
 
 .editProfileForm h1 {
   display: block;
@@ -1011,36 +1023,40 @@ Quick Services
   padding: 0;
   margin: 0px 0px 20px 0px;
   background: transparent;
-  font-size: x-large; }
+  font-size: x-large; 
+}
 
 .editProfileForm ul {
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0; 
+}
 
 .editProfileForm li {
   display: block;
   padding: 9px;
   border: 1px solid #DDDDDD;
   margin-bottom: 30px;
-  border-radius: 3px; }
+  border-radius: 3px; 
+}
 
 .editProfileForm li:last-child {
   border: none;
   margin-bottom: 0px;
-  text-align: center; }
+  text-align: center; 
+}
 
 .editProfileForm li > label {
   display: block;
   float: left;
-  margin-top: -29px;
+  margin-top: -31px;
   background: transparent;
   height: 14px;
-  padding: 2px 5px 2px 5px;
   color: #B9B9B9;
   font-size: 14px;
   overflow: hidden;
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family:  "Andale Mono", monospace; 
+}
 
 .editProfileForm genderProfile,
 .editProfileForm input[type="text"],
@@ -1065,11 +1081,13 @@ Quick Services
   line-height: 25px;
   font-size: 16px;
   padding: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  background-color: transparent; }
+  font-family: "Andale Mono", monospace;
+  background-color: transparent; 
+}
 
 .editProfileForm inputGender {
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family: "Andale Mono", monospace; 
+}
 
 .editProfileForm li > span {
   background: #b4b4b4;
@@ -1078,11 +1096,13 @@ Quick Services
   margin: 0 -9px -9px -9px;
   text-align: center;
   color: #F3F3F3;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 11px; }
+  font-family: "Andale Mono", monospace;
+  font-size: 11px; 
+}
 
 .editProfileForm textarea {
-  resize: none; }
+  resize: none; 
+}
 
 #button-add,
 .editProfileForm button,
@@ -1093,36 +1113,37 @@ Quick Services
   padding: 10px 20px 10px 20px;
   border-bottom: 3px solid #5994FF;
   border-radius: 3px;
-  color: #F3F3F3; }
+  color: #F3F3F3; 
+}
 
 #button-add:hover,
 .editProfileForm button:hover,
 .editProfileForm input[type="submit"]:hover,
 .editProfileForm input[type="button"]:hover {
   background: #6B9FFF;
-  color: #F3F3F3; }
+  color: #F3F3F3; 
+}
 
 .uploadPhoto {
   padding: 15px;
-  align-items: center; }
-
-#editProfile {
-  border-bottom: 2px solid gainsboro;
-  text-align: left;
-  padding-left: 10%;
-  font-family: "Source Sans Pro", sans-serif; }
+  align-items: center; 
+}
 
 .ownerColumn {
   padding: 30px;
   text-align: center;
-  align-items: center; }
+  align-items: center; 
+}
 
 .userRest .userRestaurantsLi {
   text-align: center;
-  padding: 10px; }
+  padding: 10px; 
+}
+
 .userRest .userRestaurantsLi a {
   background-color: transparent;
-  padding: 5px; }
+  padding: 5px; 
+}
 
 /*----------------------------------
 

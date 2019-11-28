@@ -105,7 +105,7 @@ function updateUserProfile($email,$newEmail,$newName,$data,$gender,$newCellphone
     }
 
     global $db;
-    $statement = $db->prepare('UPDATE USER SET email = ?, name = ? , birthdate= ?, gender= ?, profilePicture= ? cellphone= ? WHERE email = ?');
+    $statement = $db->prepare('UPDATE USER SET email = ?, name = ? , birthdate= ?, gender= ?, profilePicture= ?, cellphone = ? WHERE email = ?');
     $statement->execute([$newEmail,$newName,$data,$gender,$photo,$newCellphone,$email]);
     return $statement->errorCode();
 }

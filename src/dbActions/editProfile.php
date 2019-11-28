@@ -14,8 +14,8 @@ $newName = htmlspecialchars($_POST['name']);
 $userName = htmlspecialchars($_SESSION['login-user']);
 $data = htmlspecialchars($_POST['birthdate']);
 $gender = htmlspecialchars($_POST['gender']);
+$cellphone = htmlspecialchars($_POST['cellphone']);
 
-
-updateUserProfile($userName,$newEmail,$newName,$data,$gender);
+updateUserProfile($userName,$newEmail,$newName,$data,$gender, $cellphone);
 
 header('Location: ../pages/profile.php');

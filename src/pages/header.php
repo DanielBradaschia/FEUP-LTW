@@ -98,7 +98,7 @@ $_SESSION['signup-token'] = generate_random_token();
                         <input type="radio" name="gender" value="F"> Female
                     </div>
 
-                    <input type="number" name="cellPhone" placeholder="Cellphone">
+                    <input type="number" name="cellphone" placeholder="Cellphone">
                     <input id="myPassword" type="password" name="password" placeholder="Password" value="">
 
                     <script>
