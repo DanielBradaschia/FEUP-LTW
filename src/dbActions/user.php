@@ -70,9 +70,6 @@ function getUserNameById($idUser){
 }
 
 function getUserInfoByUserName($email,$info){
-    if($info == 'password')
-        return null;
-
     global $db;
     $statement = $db->prepare('SELECT * FROM USER WHERE email = ? ');
     $statement->execute([$email]);
@@ -110,7 +107,7 @@ function updateUserProfile($email,$newEmail,$newName,$data,$gender,$cellphone, $
     if(validatePassword($password)){
         $password = password_hash($password, PASSWORD_DEFAULT);
     } else {
-        $password = getUserInfoByUserName($password, 'password');
+        $password = getUserInfoByUserName($email, 'password');
     }
 
     global $db;
