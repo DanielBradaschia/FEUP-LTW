@@ -80,7 +80,7 @@ function getUserInfoByUserName($email,$info){
     return $statement->fetch()[$info];
 }
 
-function updateUserProfile($email,$newEmail,$newName,$data,$gender,$newCellphone){
+function updateUserProfile($email,$newEmail,$newName,$data,$gender,$cellphone, $password){
 
     if(!trim($newName))
         $newName = getUserInfoByUserName($email,'name');
@@ -95,6 +95,9 @@ function updateUserProfile($email,$newEmail,$newName,$data,$gender,$newCellphone
     if(!trim($data))
         $data = getUserInfoByUserName($email,'birthdate');
 
+    if(!trim($cellphone))
+        $cellphone = getUserInfoByUserName($email,'cellphone');
+
     if(strtoupper($gender) == strtoupper(getUserInfoByUserName($email,'gender'))){
         $photo = getUserInfoByUserName($email,'profilePicture');
     }
@@ -104,9 +107,15 @@ function updateUserProfile($email,$newEmail,$newName,$data,$gender,$newCellphone
         else $photo = 'photo0F.jpg';
     }
 
+    if(validatePassword($password)){
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    } else {
+        $password = getUserInfoByUserName($password, 'password');
+    }
+
     global $db;
-    $statement = $db->prepare('UPDATE USER SET email = ?, name = ? , birthdate= ?, gender= ?, profilePicture= ?, cellphone = ? WHERE email = ?');
-    $statement->execute([$newEmail,$newName,$data,$gender,$photo,$newCellphone,$email]);
+    $statement = $db->prepare('UPDATE USER SET email = ?, name = ? , birthdate= ?, gender= ?, profilePicture= ?, cellphone = ?, password = ? WHERE email = ?');
+    $statement->execute([$newEmail,$newName,$data,$gender,$photo,$cellphone,$password,$email]);
     return $statement->errorCode();
 }
 

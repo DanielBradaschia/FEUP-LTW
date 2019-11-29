@@ -42,6 +42,11 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                     </li>
 
                     <li>
+                        <label for="Password">Modify your Password</label>
+                        <input type="Text" name="password" maxlength="100" placeholder="......"><br>
+                    </li>
+
+                    <li>
                         <label for="Cellphone">Modify your Cellphone</label>
                         <input type="number" name="cellphone" maxlength="100" placeholder="<?php echo $cellphone ?>"><br>
                     </li>
