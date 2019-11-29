@@ -8,7 +8,7 @@ if ($_SESSION['token'] !== $_POST['token']) {
 }
 $_SESSION['token'] = generate_random_token();
 
-$id = getUserInfoByUserName($_SESSION['login-user'],'id');
+$id = getUserInfoByUserName($_SESSION['login-user'],'idUser');
 $photo_name = 'photo'.$id.'.jpg';
 $target_dir = "../assets/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
