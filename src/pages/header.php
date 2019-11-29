@@ -77,7 +77,6 @@ $_SESSION['signup-token'] = generate_random_token();
                     <input type="email" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Password">
                     <input type="submit" value="Login">
-                    <span class="errorMsg" id="validation"><?php echo $message; ?></span>
                 </form>
                 <span class="close" onclick="exitLogin()">x</span>
             </div>
