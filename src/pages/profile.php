@@ -82,6 +82,22 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
         </div>
     </div>
     <div class="related">
+        <?php
+            if ($type == 'Owner') {
+                echo '<div class="container">';
+                    echo '<div class="userRest">';
+                        echo '<h1 id="editProfile" style="text-align: center">Your Places</h1>';
+                    echo '</div>';
+                echo '</div>';
+               
+                echo '<div class="container">';
+                    echo '<div class="ownerColumn">';
+                        echo 'Can\'t find your Places?' . '<br>' . '<br>';
+                        echo '<button id="button-add" class="button-item" type="button" onclick="location.href=\'addPlace.php\';">Add a Place</button>';
+                    echo '</div>';
+                echo '</div>';
+                }
+            ?>
         </div>
     </div>
 </div>
