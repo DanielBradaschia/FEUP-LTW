@@ -40,3 +40,38 @@ function getPlaceByOwnerId($id){
         }
         return true;
 }
+
+function uploadPhoto($target_file, $id)
+{
+    global $db;
+    $statement = $db->prepare('INSERT INTO PHOTO (idProperty, name) VALUES (?,?)');
+    if ($statement->execute([$id, $target_file])) {
+        return true;
+    }
+    return false;
+}
+
+function getPropertyInfoById($idProperty, $info)
+{
+    global $db;
+    $statement = $db->prepare('SELECT * FROM PROPERTY WHERE idOwner = ? ');
+    $statement->execute([$idProperty]);
+
+    return $statement->fetch()[$info];
+}
+
+function getPlacePhotos($id)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM PHOTO WHERE idProperty=?');
+    $stmt->execute([$id]);
+
+    $ret = false;
+
+    while ($row = $stmt->fetch()) {
+        echo '<img class="mySlides" src=' . $row['name'] . ' hidden="hidden">';
+        $ret = true;
+    }
+
+    return $ret;
+}
