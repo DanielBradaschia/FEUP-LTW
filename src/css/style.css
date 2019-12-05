@@ -1135,12 +1135,12 @@ Quick Services
   align-items: center; 
 }
 
-.userRest .userRestaurantsLi {
+.userRest .placeList {
   text-align: center;
-  padding: 10px; 
+  /*padding: 10px;*/ 
 }
 
-.userRest .userRestaurantsLi a {
+.userRest .placeList a {
   background-color: transparent;
   padding: 5px; 
 }

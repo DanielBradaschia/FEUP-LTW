@@ -4,6 +4,7 @@
 $title = "Welcome";      // Set the title
 include_once "header.php";
 include_once "../dbActions/user.php";
+include_once "../dbActions/placeUtils.php";
 
 // Generate token for the update action
 $_SESSION['token'] = generate_random_token();
@@ -87,9 +88,9 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                 echo '<div class="container">';
                     echo '<div class="userRest">';
                         echo '<h1 id="editProfile" style="text-align: center">Your Places</h1>';
+                        getPlaceByOwnerId(getUserInfoByUserName($username, 'idUser'));
                     echo '</div>';
                 echo '</div>';
-               
                 echo '<div class="container">';
                     echo '<div class="ownerColumn">';
                         echo 'Can\'t find your Places?' . '<br>' . '<br>';

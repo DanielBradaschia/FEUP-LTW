@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('config.php');
 
 function placeAlreadyExists($address){
@@ -16,15 +15,28 @@ function placeAlreadyExists($address){
         return false;
 }
 
-function addPlaceToUser($title, $address, $price, $description){
+function addPlaceToUser($title, $address, $price, $description, $id){
     global $db;
 
-    $statement = $db->prepare('INSERT INTO PROPERTY (address, title, price, description) VALUES (?,?,?,?)');
-    if($statement->execute([$address, $title, $price, $description])){
+    $statement = $db->prepare('INSERT INTO PROPERTY (idOwner, address, title, price, description) VALUES (?,?,?,?,?)');
+    if($statement->execute([$id, $address, $title, $price, $description])){
         header('Location: ../pages/profile.php');
         exit();
     }
     else
         $_SESSION["ERROR"] = "Error registering place";
 
+}
+
+function getPlaceByOwnerId($id){
+        global $db;
+        $statement = $db->prepare('SELECT * FROM PROPERTY WHERE IdOwner = ? ');
+        $statement->execute([$id]);
+
+        while ($row = $statement->fetch()) {
+            echo '<div class="placeList">';
+                echo '<a href="place.php?id=' . $id . '">' . $row['title'] . '</a>';
+            echo '</div>';
+        }
+        return true;
 }
