@@ -1773,50 +1773,36 @@ xcustom form elements
 
 /* --------------------------------
 
-Restaurant Page
+Place Page
 
 -------------------------------- */
-.searchBarContainer {
-  width: 100%;
-  padding: 10px 5px 5px 5px;
-  display: flex;
-  justify-content: center; }
-  .searchBarContainer form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    max-width: 1150px;
-    min-width: 500px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    padding: 5px 5px 5px 5px; }
 
-.restaurantPage {
+.placePage {
   display: flex;
   flex-wrap: wrap;
   -webkit-align-content: center;
   align-content: center; }
-  .restaurantPage .container {
+  .placePage .container {
     margin-bottom: 1.6em;
     background-color: #ffffff;
     border-radius: 4px;
     padding: 10px 10px 10px 10px; }
-    .restaurantPage .container .flexPhotos {
+    .placePage .container .flexPhotos {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap; }
-      .restaurantPage .container .flexPhotos .flexContainer {
+      .placePage .container .flexPhotos .flexContainer {
         width: 47%;
         height: 150px;
         background-position: center center;
         background-repeat: no-repeat;
         object-fit: cover;
         overflow: hidden; }
-        .restaurantPage .container .flexPhotos .flexContainer img {
+        .placePage .container .flexPhotos .flexContainer img {
           min-width: 100%;
           height: 100%;
           margin: 3px; }
-  .restaurantPage .containerUserPhotos {
+  .placePage .containerUserPhotos {
     width: 90%;
     margin-bottom: 1.6em;
     background-color: whitesmoke;
@@ -1824,24 +1810,24 @@ Restaurant Page
     padding: 10px 10px 10px 10px;
     margin-left: 20px;
     margin-top: 10px; }
-  .restaurantPage .main {
+  .placePage .main {
     padding: 10px 10px 10px 10px;
     position: relative;
     min-width: 500px;
     width: 100%; }
-  .restaurantPage .related {
+  .placePage .related {
     padding: 10px 10px 10px 10px;
     position: relative;
     min-width: 500px;
     width: 100%; }
-  .restaurantPage .arrowRight {
+  .placePage .arrowRight {
     position: absolute;
     top: 150px;
     left: 720px;
     font-size: xx-large;
     color: white;
     cursor: pointer; }
-  .restaurantPage .arrowLeft {
+  .placePage .arrowLeft {
     position: absolute;
     top: 150px;
     left: 30px;
@@ -1850,15 +1836,15 @@ Restaurant Page
     cursor: pointer; }
 
 @media only screen and (min-width: 850px) {
-  .restaurantPage {
+  .placePage {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center; }
-    .restaurantPage .main {
+    .placePage .main {
       max-width: 770px;
       min-width: 400px;
       float: left; }
-    .restaurantPage .related {
+    .placePage .related {
       min-width: 400px;
       width: 400px;
       float: right; } }
@@ -1874,14 +1860,14 @@ Restaurant Page
     width: 100%;
     z-index: -1; }
 
-#restaurantName {
+#placeName {
   font-family: "Source Sans Pro", sans-serif;
   padding-top: 10px;
   padding-left: 5px;
   font-size: x-large;
   font-weight: bold; }
 
-#restaurantLocation {
+#placeLocation {
   font-family: "Source Sans Pro", sans-serif;
   padding-top: 10px;
   padding-left: 5px;
@@ -1892,15 +1878,15 @@ Restaurant Page
   padding-right: 20px;
   padding-top: 20px; }
 
-.editRestForm {
+.editPlaceForm {
   margin-left: 20px;
   border-radius: 2px;
   align-content: center;
   font-family: "Source Sans Pro", sans-serif; }
 
-.editRestForm button,
-.editRestForm input[type="submit"],
-.editRestForm input[type="button"] {
+.editPlaceForm button,
+.editPlaceForm input[type="submit"],
+.editPlaceForm input[type="button"] {
   margin-top: 10px;
   align-content: center;
   background: #34495E;
@@ -1911,23 +1897,23 @@ Restaurant Page
   color: #F3F3F3; }
 
 #button-add:hover,
-.editRestForm button:hover,
-.editRestForm input[type="submit"]:hover,
-.editRestForm input[type="button"]:hover {
+.editPlaceForm button:hover,
+.editPlaceForm input[type="submit"]:hover,
+.editPlaceForm input[type="button"]:hover {
   background: #6B9FFF;
   color: #F3F3F3; }
 
-.editRestForm input[type="text"],
-.editRestForm input[type="date"],
-.editRestForm input[type="datetime"],
-.editRestForm input[type="email"],
-.editRestForm input[type="number"],
-.editRestForm input[type="search"],
-.editRestForm input[type="time"],
-.editRestForm input[type="url"],
-.editRestForm input[type="password"],
-.editRestForm textarea,
-.editRestForm select {
+.editPlaceForm input[type="text"],
+.editPlaceForm input[type="date"],
+.editPlaceForm input[type="datetime"],
+.editPlaceForm input[type="email"],
+.editPlaceForm input[type="number"],
+.editPlaceForm input[type="search"],
+.editPlaceForm input[type="time"],
+.editPlaceForm input[type="url"],
+.editPlaceForm input[type="password"],
+.editPlaceForm textarea,
+.editPlaceForm select {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1941,7 +1927,7 @@ Restaurant Page
   padding: 0;
   font-family: "Source Sans Pro", sans-serif; }
 
-.editRestForm label {
+.editPlaceForm label {
   float: left;
   height: 14px;
   margin: 5px;
@@ -1950,7 +1936,7 @@ Restaurant Page
   overflow: hidden;
   font-family: "Source Sans Pro", sans-serif; }
 
-addRestaurantPhotoForm {
+addPlacePhotoForm {
   max-width: 600px;
   margin: 50px auto;
   margin-left: 30%;
@@ -1958,9 +1944,9 @@ addRestaurantPhotoForm {
   padding: 20px;
   font-family: "Source Sans Pro", sans-serif; }
 
-.addRestaurantPhotoForm button,
-.addRestaurantPhotoForm input[type="submit"],
-.addRestaurantPhotoForm input[type="button"] {
+.addPlacePhotoForm button,
+.addPlacePhotoForm input[type="submit"],
+.addPlacePhotoForm input[type="button"] {
   background: #34495E;
   border: none;
   padding: 10px 20px 10px 20px;
@@ -1969,9 +1955,9 @@ addRestaurantPhotoForm {
   border-radius: 3px;
   color: #F3F3F3; }
 
-.addRestaurantPhotoForm button:hover,
-.addRestaurantPhotoForm input[type="submit"]:hover,
-.addRestaurantPhotoForm input[type="button"]:hover {
+.addPlacePhotoForm button:hover,
+.addPlacePhotoForm input[type="submit"]:hover,
+.addPlacePhotoForm input[type="button"]:hover {
   background: #6B9FFF;
   color: #F3F3F3; }
 

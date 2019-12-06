@@ -83,3 +83,25 @@ function getPlacePhotos($id)
 
     return $ret;
 }
+
+function updatePlaceInfo($id,$placeName,$placeAddress,$placeDescription,$placePrice)
+{
+   if (!trim($placeName))
+        $placeName = getPropertyInfoById($id, 'name');
+
+
+    if (!trim($placeAddress))
+        $placeAddress = getPropertyInfoById($id, 'address');
+
+    if (!trim($placeDescription))
+        $placeDescription = getPropertyInfoById($id, 'description');
+
+    if (!trim($placePrice)) {
+        $placePrice = getPropertyInfoById($id, 'price');
+    }
+
+    global $db;
+    $statement = $db->prepare('UPDATE PROPERTY SET address = ?, title= ?, price= ?, description= ? WHERE idProperty = ?');
+    $statement->execute([$placeAddress, $placeName, $placePrice, $placeDescription, $id]);
+    return $statement->errorCode();
+}

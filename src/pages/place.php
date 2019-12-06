@@ -15,7 +15,7 @@
     $namePlace = getPropertyInfoById($id, 'title');
     $location = getPropertyInfoById($id, 'address');
     $description = getPropertyInfoById($id, 'description');
-    $rating = getPropertyInfoById($_SESSION["restID"], 'rate');
+    $rating = getPropertyInfoById($id, 'rate');
     ?>
     
     <script src="../js/slider.js"></script>
@@ -36,15 +36,55 @@
                         }
                         ?>
                     </div>
-                    
                     <p id="placeName"><?php echo $namePlace ?></p>
                     <p id="placeLocation"><?php echo $location ?></p>
                     <p id="placeDescription"><?php echo $description ?></p>
-                </div>
-
-
-                
+                </div>    
             </div>
+
+            <div class="container">
+                <div class="editPlace">
+                    <?php
+                        echo '<form class="editPlaceForm" action="../dbActions/editPlace.php" method="post">';
+                        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+                        
+                        echo '<fieldset>';
+                        echo '<label>Address</label>';
+                        echo '<input type="text" name="placeAddress" value="' . getPropertyInfoById($id, 'address') . '"">';
+                        echo '<br>';
+                        
+                        echo '<label>Title</label>';
+                        echo ' <input type="text" name="placeTitle" value="' . getPropertyInfoById($id, 'title') . '">';
+                        echo '<br>';
+                        
+                        echo '<label>Description</label>';
+                        echo ' <input type="text" name="placeDescription" value="' . getPropertyInfoById($id, 'description') . '">';
+                        echo '<br>';
+                        
+                        echo '<label>Cost</label>';
+                        echo ' <input type="text" name="placePrice" value="' . getPropertyInfoById($id, 'price') . '">';
+                        echo '<input type="submit" value="Submit">';
+                        echo '</fieldset>';
+                        echo ' </form>';
+                    ?>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="addPhotos">
+                    <p class="boxTitle">Add a photo to your galery:</p>
+                    <div class="addPhotos">
+                        <form class="addPlacePhotoForm" action="../dbActions/uploadPlacePhoto.php?" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
+                        <input id="findPhoto" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+                        <br>
+                        <input type="submit" value="Upload Photo" name="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
 
