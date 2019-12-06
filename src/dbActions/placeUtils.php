@@ -35,7 +35,7 @@ function getPlaceByOwnerId($id){
 
         while ($row = $statement->fetch()) {
             echo '<div class="placeList">';
-                echo '<a href="place.php?id=' . $id . '">' . $row['title'] . '</a>';
+                echo '<a href="place.php?id=' . $row['idProperty'] . '">' . $row['title'] . '</a>';
             echo '</div>';
         }
         return true;
@@ -54,7 +54,7 @@ function uploadPhoto($target_file, $id)
 function getPropertyInfoById($idProperty, $info)
 {
     global $db;
-    $statement = $db->prepare('SELECT * FROM PROPERTY WHERE idOwner = ? ');
+    $statement = $db->prepare('SELECT * FROM PROPERTY WHERE idProperty = ? ');
     $statement->execute([$idProperty]);
 
     return $statement->fetch()[$info];
