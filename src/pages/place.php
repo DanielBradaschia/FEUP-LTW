@@ -14,6 +14,7 @@
     $_SESSION['restID'] = $id;
     $namePlace = getPropertyInfoById($id, 'title');
     $location = getPropertyInfoById($id, 'address');
+    $description = getPropertyInfoById($id, 'description');
     $rating = getPropertyInfoById($_SESSION["restID"], 'rate');
     ?>
     
@@ -38,6 +39,7 @@
                     
                     <p id="placeName"><?php echo $namePlace ?></p>
                     <p id="placeLocation"><?php echo $location ?></p>
+                    <p id="placeDescription"><?php echo $description ?></p>
                 </div>
 
 

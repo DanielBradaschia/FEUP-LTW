@@ -20,8 +20,7 @@ function addPlaceToUser($title, $address, $price, $description, $id){
 
     $statement = $db->prepare('INSERT INTO PROPERTY (idOwner, address, title, price, description) VALUES (?,?,?,?,?)');
     if($statement->execute([$id, $address, $title, $price, $description])){
-        header('Location: ../pages/profile.php');
-        exit();
+        return true;
     }
     else
         $_SESSION["ERROR"] = "Error registering place";
@@ -44,7 +43,7 @@ function getPlaceByOwnerId($id){
 function uploadPhoto($target_file, $id)
 {
     global $db;
-    $statement = $db->prepare('INSERT INTO PHOTO (idProperty, name) VALUES (?,?)');
+    $statement = $db->prepare('INSERT INTO PHOTO (idProperty, photo) VALUES (?,?)');
     if ($statement->execute([$id, $target_file])) {
         return true;
     }
@@ -56,6 +55,15 @@ function getPropertyInfoById($idProperty, $info)
     global $db;
     $statement = $db->prepare('SELECT * FROM PROPERTY WHERE idProperty = ? ');
     $statement->execute([$idProperty]);
+
+    return $statement->fetch()[$info];
+}
+
+function getPropertyInfoByAddress($address, $info)
+{
+    global $db;
+    $statement = $db->prepare('SELECT * FROM PROPERTY WHERE address = ? ');
+    $statement->execute([$address]);
 
     return $statement->fetch()[$info];
 }
