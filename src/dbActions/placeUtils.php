@@ -77,7 +77,7 @@ function getPlacePhotos($id)
     $ret = false;
 
     while ($row = $stmt->fetch()) {
-        echo '<img class="mySlides" src=' . $row['name'] . ' hidden="hidden">';
+        echo '<img class="mySlides" src=' . $row['photo'] . ' hidden="hidden">';
         $ret = true;
     }
 
