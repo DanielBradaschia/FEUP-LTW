@@ -39,15 +39,11 @@
                     <p id="placeName"><?php echo $namePlace ?></p>
                     <p id="placeLocation"><?php echo $location ?></p>
                     <p id="placeDescription"><?php echo $description ?></p>
-                    <form action="" method="post">
-                    <input type="submit" name="deleteItem" value="'.$id.'" />
                     <?php
-                        if(isset($_POST['deleteItem']))
-                        {
-                            removePlace($id);
-                            header('Location: ../pages/profile.php');
-                        }
-                    ?>    
+                        echo '<form class="removePlace" action="../dbActions/removePlace.php" method="post">';
+                        echo '<button type="submit" name="deleteItem" value="'.$id.'">Delete Place</button>';
+                        echo '</form>';
+                    ?>
                 </div>    
             </div>
 
@@ -71,6 +67,7 @@
                         
                         echo '<label>Cost</label>';
                         echo '<input type="text" name="placePrice" value="' . getPropertyInfoById($id, 'price') . '">';
+                    
                         echo '<input type="submit" value="Submit">';
                         echo '</fieldset>';
                         echo '</form>';

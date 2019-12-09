@@ -167,7 +167,12 @@ Footer
  ---------------------------------*/
 .footer {
   background: #34495E;
-  height: 50px; }
+  height: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  position: relative;
+}
 
 .footer .workdoneby {
   font-size: 1rem;
@@ -176,7 +181,8 @@ Footer
   padding-top: 10px;
   padding-left: 30%;
   padding-right: 15%;
-  font-size: 15px; }
+  font-size: 15px; 
+}
 
 /*--------------------------------
 
@@ -1781,108 +1787,162 @@ Place Page
   display: flex;
   flex-wrap: wrap;
   -webkit-align-content: center;
-  align-content: center; }
-  .placePage .container {
-    margin-bottom: 1.6em;
-    background-color: #ffffff;
-    border-radius: 4px;
-    padding: 10px 10px 10px 10px; }
-    .placePage .container .flexPhotos {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap; }
-      .placePage .container .flexPhotos .flexContainer {
-        width: 47%;
-        height: 150px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        object-fit: cover;
-        overflow: hidden; }
-        .placePage .container .flexPhotos .flexContainer img {
-          min-width: 100%;
-          height: 100%;
-          margin: 3px; }
-  .placePage .containerUserPhotos {
-    width: 90%;
-    margin-bottom: 1.6em;
-    background-color: whitesmoke;
-    border-radius: 4px;
-    padding: 10px 10px 10px 10px;
-    margin-left: 20px;
-    margin-top: 10px; }
-  .placePage .main {
-    padding: 10px 10px 10px 10px;
-    position: relative;
-    min-width: 500px;
-    width: 100%; }
-  .placePage .related {
-    padding: 10px 10px 10px 10px;
-    position: relative;
-    min-width: 500px;
-    width: 100%; }
-  .placePage .arrowRight {
-    position: absolute;
-    top: 150px;
-    left: 720px;
-    font-size: xx-large;
-    color: white;
-    cursor: pointer; }
-  .placePage .arrowLeft {
-    position: absolute;
-    top: 150px;
-    left: 30px;
-    font-size: xx-large;
-    color: white;
-    cursor: pointer; }
+  align-content: center;
+}
+
+.placePage .container {
+  margin-bottom: 1.6em;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 10px 10px 10px;
+}
+
+.placePage .container .flexPhotos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+}
+
+.placePage .container .flexPhotos .flexContainer {
+  width: 47%;
+  height: 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  overflow: hidden; 
+}
+
+.placePage .container .flexPhotos .flexContainer img {
+  min-width: 100%;
+  height: 100%;
+  margin: 3px;
+}
+
+.placePage .containerUserPhotos {
+  width: 90%;
+  margin-bottom: 1.6em;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 10px 10px 10px 10px;
+  margin-left: 20px;
+  margin-top: 10px; 
+}
+
+.placePage .main {
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  min-width: 500px;
+  width: 100%; 
+}
+
+.placePage .related {
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  min-width: 500px;
+  width: 100%; 
+}
+
+.placePage .arrowRight {
+  position: absolute;
+  top: 150px;
+  left: 720px;
+  font-size: xx-large;
+  color: white;
+  cursor: pointer; 
+}
+
+.placePage .arrowLeft {
+  position: absolute;
+  top: 150px;
+  left: 30px;
+  font-size: xx-large;
+  color: white;
+  cursor: pointer; 
+}
 
 @media only screen and (min-width: 850px) {
   .placePage {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center; }
-    .placePage .main {
-      max-width: 770px;
-      min-width: 400px;
-      float: left; }
-    .placePage .related {
-      min-width: 400px;
-      width: 400px;
-      float: right; } }
+    justify-content: center; 
+  }
+    
+  .placePage .main {
+    max-width: 770px;
+    min-width: 400px;
+    float: left; 
+  }
+  
+  .placePage .related {
+    min-width: 400px;
+    width: 400px;
+    float: right; 
+  } 
+}
+
 .mySlides {
   width: 100%;
   height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  object-fit: cover; }
+  object-fit: cover; 
+}
+
   .mySlides img {
-    position: fixed;
-    width: 100%;
-    z-index: -1; }
+  position: fixed;
+  width: 100%;
+  z-index: -1; 
+}
 
 #placeName {
   font-family: "Source Sans Pro", sans-serif;
   padding-top: 10px;
   padding-left: 5px;
   font-size: x-large;
-  font-weight: bold; }
+  font-weight: bold; 
+}
 
 #placeLocation {
   font-family: "Source Sans Pro", sans-serif;
   padding-top: 10px;
   padding-left: 5px;
-  font-size: medium; }
+  font-size: medium; 
+}
 
 #findPhoto {
   align-content: center;
   padding-right: 20px;
-  padding-top: 20px; }
+  padding-top: 20px; 
+}
 
 .editPlaceForm {
   margin-left: 20px;
   border-radius: 2px;
   align-content: center;
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family: "Source Sans Pro", sans-serif; 
+}
+
+.removePlace button,
+.removePlace input[type="submit"],
+.removePlace input[type="button"] {
+  margin-top: 10px;
+  align-content: center;
+  background: rgb(161, 23, 23);
+  border: none;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 3px solid rgb(201, 10, 10);
+  border-radius: 3px;
+  color: #F3F3F3; 
+}
+
+#button-add:hover,
+.removePlace button:hover,
+.removePlace input[type="submit"]:hover,
+.removePlace input[type="button"]:hover {
+  background: rgb(250, 36, 36);
+  color: #F3F3F3; 
+}
 
 .editPlaceForm button,
 .editPlaceForm input[type="submit"],
@@ -1894,14 +1954,16 @@ Place Page
   padding: 10px 10px 10px 10px;
   border-bottom: 3px solid #5994FF;
   border-radius: 3px;
-  color: #F3F3F3; }
+  color: #F3F3F3; 
+}
 
 #button-add:hover,
 .editPlaceForm button:hover,
 .editPlaceForm input[type="submit"]:hover,
 .editPlaceForm input[type="button"]:hover {
   background: #6B9FFF;
-  color: #F3F3F3; }
+  color: #F3F3F3; 
+}
 
 .editPlaceForm input[type="text"],
 .editPlaceForm input[type="date"],
@@ -1920,12 +1982,13 @@ Place Page
   width: 100%;
   display: block;
   outline: none;
-  border: none;
-  height: 25px;
+  border: auto;
+  height: 30px;
   line-height: 25px;
   font-size: 16px;
   padding: 0;
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family: "Source Sans Pro", sans-serif; 
+}
 
 .editPlaceForm label {
   float: left;
@@ -1934,7 +1997,8 @@ Place Page
   color: #B9B9B9;
   font-size: 14px;
   overflow: hidden;
-  font-family: "Source Sans Pro", sans-serif; }
+  font-family: "Source Sans Pro", sans-serif; 
+}
 
 addPlacePhotoForm {
   max-width: 600px;
