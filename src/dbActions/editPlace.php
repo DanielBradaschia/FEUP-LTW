@@ -6,7 +6,7 @@ include_once "config.php";
 include_once "placeUtils.php";
 include_once "user.php";
 
-// If the user didn't come from the edit restaurant page.
+// If the user didn't come from the edit place page.
 if ($_SESSION['token'] !== $_POST['token']) {
     header('HTTP/1.0 403 Forbidden');
     die();

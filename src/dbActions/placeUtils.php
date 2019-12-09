@@ -105,3 +105,13 @@ function updatePlaceInfo($id,$placeName,$placeAddress,$placeDescription,$placePr
     $statement->execute([$placeAddress, $placeName, $placePrice, $placeDescription, $id]);
     return $statement->errorCode();
 }
+
+function removePlace($id)
+{
+    global $db;
+    $statement = $db->prepare('DELETE FROM PROPERTY WHERE idProperty = ?');
+    if ($statement->execute([$id])) {
+        return true;
+    }
+    return false;
+}
