@@ -1927,6 +1927,7 @@ Place Page
 .removePlace input[type="submit"],
 .removePlace input[type="button"] {
   margin-top: 10px;
+  margin-left: 20px;
   align-content: center;
   background: rgb(161, 23, 23);
   border: none;

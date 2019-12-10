@@ -7,6 +7,7 @@
     $title = "Welcome";
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
+    include_once "../dbActions/user.php";
     //include_once "../dbActions/reviewsUtils.php";
     $_SESSION['token'] = generate_random_token();
     $id = $_GET["id"];
@@ -39,56 +40,60 @@
                     <p id="placeName"><?php echo $namePlace ?></p>
                     <p id="placeLocation"><?php echo $location ?></p>
                     <p id="placeDescription"><?php echo $description ?></p>
-                    <?php
-                        echo '<form class="removePlace" action="../dbActions/removePlace.php" method="post">';
-                        echo '<button type="submit" name="deleteItem" value="'.$id.'">Delete Place</button>';
-                        echo '</form>';
-                    ?>
                 </div>    
             </div>
-
+            
             <div class="container">
                 <div class="editPlace">
                     <?php
-                        echo '<form class="editPlaceForm" action="../dbActions/editPlace.php" method="post">';
-                        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+                        if(isPlaceOwner(getIdByUserName($userId), $id))
+                        {
+                            echo '<div class="container">';
+                                echo '<div class="addPhotos">';
+                                    echo '<p class="boxTitle">Add a photo to your galery:</p>';
+                                    echo '<div class="addPhotos">';
+                                    echo '<form class="addPlacePhotoForm" action="../dbActions/uploadPlacePhoto.php?" method="post" enctype="multipart/form-data">';
+                                    echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+                                    echo '<input id="findPhoto" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">';
+                                    echo '<br>';
+                                    echo '<input type="submit" value="Upload Photo" name="submit">';
+                                    echo '</form>';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+
+                            echo '<form class="editPlaceForm" action="../dbActions/editPlace.php" method="post">';
+                            echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+                            
+                            echo '<label>Address</label>';
+                            echo '<input type="text" name="placeAddress" value="' . getPropertyInfoById($id, 'address') . '"">';
+                            echo '<br>';
+                            
+                            echo '<label>Title</label>';
+                            echo ' <input type="text" name="placeTitle" value="' . getPropertyInfoById($id, 'title') . '">';
+                            echo '<br>';
+                            
+                            echo '<label>Description</label>';
+                            echo ' <input type="text" name="placeDescription" value="' . getPropertyInfoById($id, 'description') . '">';
+                            echo '<br>';
+                            
+                            echo '<label>Cost</label>';
+                            echo '<input type="text" name="placePrice" value="' . getPropertyInfoById($id, 'price') . '">';
                         
-                        echo '<label>Address</label>';
-                        echo '<input type="text" name="placeAddress" value="' . getPropertyInfoById($id, 'address') . '"">';
-                        echo '<br>';
-                        
-                        echo '<label>Title</label>';
-                        echo ' <input type="text" name="placeTitle" value="' . getPropertyInfoById($id, 'title') . '">';
-                        echo '<br>';
-                        
-                        echo '<label>Description</label>';
-                        echo ' <input type="text" name="placeDescription" value="' . getPropertyInfoById($id, 'description') . '">';
-                        echo '<br>';
-                        
-                        echo '<label>Cost</label>';
-                        echo '<input type="text" name="placePrice" value="' . getPropertyInfoById($id, 'price') . '">';
-                    
-                        echo '<input type="submit" value="Submit">';
-                        echo '</fieldset>';
-                        echo '</form>';
+                            echo '<input type="submit" value="Submit">';
+                            echo '</fieldset>';
+                            echo '</form>';
+
+                            echo '<form class="removePlace" action="../dbActions/removePlace.php" method="post">';
+                            echo '<button type="submit" name="deleteItem" value="'.$id.'">Delete Place</button>';
+                            echo '</form>';
+                        }
                     ?>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="addPhotos">
-                    <p class="boxTitle">Add a photo to your galery:</p>
-                    <div class="addPhotos">
-                        <form class="addPlacePhotoForm" action="../dbActions/uploadPlacePhoto.php?" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
-                        <input id="findPhoto" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
-                        <br>
-                        <input type="submit" value="Upload Photo" name="submit">
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+            <?php
+            ?>
 
 
         </div>

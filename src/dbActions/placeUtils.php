@@ -115,3 +115,16 @@ function removePlace($id)
     }
     return false;
 }
+
+function isPlaceOwner($userId, $placeId)
+{
+    global $db;
+    $statement = $db->prepare('SELECT idOwner FROM PROPERTY WHERE idProperty = ? ');
+    $statement->execute([$placeId]);
+    $res = $statement->fetch()['idOwner'];
+
+    if ($res == $userId)
+        return true;
+
+    return false;
+}
