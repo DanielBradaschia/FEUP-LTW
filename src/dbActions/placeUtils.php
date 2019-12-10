@@ -59,6 +59,15 @@ function getPropertyInfoById($idProperty, $info)
     return $statement->fetch()[$info];
 }
 
+function getPropertyIdByTitle($title)
+{
+    global $db;
+    $statement = $db->prepare('SELECT idProperty FROM PROPERTY WHERE title = ? ');
+    $statement->execute([$title]);
+    $res = $statement->fetch();
+    return $res[0];
+}
+
 function getPropertyInfoByAddress($address, $info)
 {
     global $db;
@@ -127,4 +136,36 @@ function isPlaceOwner($userId, $placeId)
         return true;
 
     return false;
+}
+function getPlace($name, $priceMin, $priceMax, $rating, $location)
+{
+    global $db;
+    $namekeywords = explode('%20', $name);
+    $namestring = '%' . implode('% OR LIKE %', $namekeywords) . '%';
+    $locationkeywords = explode('%20', $location);
+    $locationstring = '%' . implode('% OR LIKE %', $locationkeywords) . '%';
+    $ratingkeywords = explode('%20', $rating);
+    $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
+
+    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND rate LIKE ? AND price BETWEEN ? AND ?;");
+    $stmt->execute([$namestring, $location, $ratingstring, $priceMin, $priceMax]);
+
+    return $stmt->fetchAll();
+}
+
+function showFirstPlaceImage($idPlace)
+{
+
+    global $db;
+    $statement = $db->prepare('SELECT  title FROM PROPERTY WHERE  idProperty= ?');
+    $statement->execute([$idPlace]);
+    $row = $statement->fetch();
+    $fileName = $row['name'];
+
+    if (!trim($fileName)) {
+        $fileName = "../assets/default_house.png";
+        echo "<img src=" . $fileName . " />";
+    }
+
+    echo "<img src=" . $fileName . " />";
 }
