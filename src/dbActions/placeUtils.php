@@ -147,10 +147,31 @@ function getPlace($name, $priceMin, $priceMax, $rating, $location)
     $ratingkeywords = explode('%20', $rating);
     $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
 
+    //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND rate LIKE ? AND price BETWEEN ? AND ?;");
+    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
+    $stmt->execute([$priceMin, $priceMax]);
+
+    return $stmt->fetchAll();
+}
+
+function setURL($name, $priceMin, $priceMax, $rating, $location)
+{
+    global $db;
+    $namekeywords = explode('%20', $name);
+    $namestring = '%' . implode('% OR LIKE %', $namekeywords) . '%';
+    $locationkeywords = explode('%20', $location);
+    $locationstring = '%' . implode('% OR LIKE %', $locationkeywords) . '%';
+    $ratingkeywords = explode('%20', $rating);
+    $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
+
     $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND rate LIKE ? AND price BETWEEN ? AND ?;");
     $stmt->execute([$namestring, $location, $ratingstring, $priceMin, $priceMax]);
 
-    return $stmt->fetchAll();
+    while ($row = $stmt->fetch()) {
+        echo "<a class='servicesLink' onclick=\"href='searchPlaces.php?place=$name&priceMin=$priceMin&priceMax=$priceMax&rating=$rating&location=$location';\"></a><br>";
+    }
+
+
 }
 
 function showFirstPlaceImage($idPlace)

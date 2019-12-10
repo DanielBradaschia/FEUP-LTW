@@ -221,16 +221,16 @@ $( function() {
     slider.slider({
         range: true,
         min: 0,
-        max: 150,
+        max: 999,
         values: [ slider.attr('min'), slider.attr('max') ],
         slide: function( event, ui ) {
             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-            var string = "searchRestaurants.php?priceMin=" + ui.values[0] + "&priceMax=" + ui.values[1];
+            var string = "searchPlaces.php?priceMin=" + ui.values[0] + "&priceMax=" + ui.values[1];
             console.log(event);
         },
         stop: function( event, ui ) {
             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-            var string = "searchRestaurants.php?priceMin=" + ui.values[0] + "&priceMax=" + ui.values[1];
+            var string = "searchPlaces.php?priceMin=" + ui.values[0] + "&priceMax=" + ui.values[1];
             console.log(event);
             minV=ui.values[0];
             maxV=ui.values[1];

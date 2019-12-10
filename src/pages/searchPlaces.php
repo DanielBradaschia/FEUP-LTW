@@ -1,8 +1,8 @@
 <?php
-session_start();
-session_regenerate_id(true);
+//session_start();
+//session_regenerate_id(true);
 ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <?php
 
     include_once "header.php";
@@ -39,13 +39,16 @@ session_regenerate_id(true);
         <div class="advancedSearch">
             <div class="container">
                 <section class="filters">
+                    <?php
+                    setURL($name, $priceMin, $priceMax, $rating, $location);
+                    ?>
                     <h2>Price</h2>
                     <p>
                         <label for="amount">Price range:</label>
                         <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                     </p>
                     <?php
-                    echo "<div id=\"slider-range\" min=\"" . $priceMin . "\" max=\"" . $priceMax . "\"></div>";
+                        echo "<div id=\"slider-range\" min=\"" . $priceMin . "\" max=\"" . $priceMax . "\"></div>";
                     ?>
                     <label id="minValue"></label>
                     <label id="maxValue"></label>
@@ -82,7 +85,7 @@ session_regenerate_id(true);
                 echo '<br>'.'</br>';
                 echo '<br>'.'</br>';
 
-                echo "<h4> Cust for Two:</h4>";
+                echo "<h4> Cost for Two:</h4>";
 
                 $temp = ' - ';
 
