@@ -20,6 +20,7 @@ include_once "header.php";
 				<b>New York City</b>
                 <b>London</b>
                 <b>Tokyo</b>
+                <b>Porto</b>
 			</span>
             </h1>
         </section> <!-- cd-intro http://localhost:8000/index.php -->

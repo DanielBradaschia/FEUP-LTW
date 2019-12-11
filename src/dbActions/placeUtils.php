@@ -147,9 +147,9 @@ function getPlace($name, $priceMin, $priceMax, $rating, $location)
     $ratingkeywords = explode('%20', $rating);
     $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
 
-    //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND rate LIKE ? AND price BETWEEN ? AND ?;");
-    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
-    $stmt->execute([$priceMin, $priceMax]);
+    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?) AND description LIKE ?;");
+    //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
+    $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax, $namestring]);
 
     return $stmt->fetchAll();
 }
