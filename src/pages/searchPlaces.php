@@ -88,6 +88,7 @@
                 $placeTitle = $row['title'];
                 $placeAddress = $row['address'];
                 $placePrice = $row['price'];
+                $placeDescription = $row['description'];
                 $restRating = $row['rate'];
                 $id = getPropertyIdByTitle($placeTitle);
 
@@ -98,8 +99,12 @@
                 echo '</div>';
                 echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
                 echo '<br>'.'</br>';
+                echo '<br>'.'</br>';
+                echo "<h4> Address:</h4>";
                 echo "<h1>".$placeAddress."</h1>";
                 echo '<br>'.'</br>';
+                echo "<h4> Description:</h4>";
+                echo "<h1>".$placeDescription."</h1>";
                 echo '</div>';
                 echo '<div class="row">';
                 echo "<h4> Price:</h4>";
