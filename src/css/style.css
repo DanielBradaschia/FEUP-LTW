@@ -2481,8 +2481,8 @@ Place Search Pages
 
 .placeSearchPage .container .row .contentPhoto {
   position: relative;
-  height: 150px;
-  width: 150px;
+  height: 183px;
+  width: 275px;
   overflow: hidden;
   float: left;
 }

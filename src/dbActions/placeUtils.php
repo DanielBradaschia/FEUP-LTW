@@ -147,9 +147,9 @@ function getPlace($name, $priceMin, $priceMax, $rating, $location)
     $ratingkeywords = explode('%20', $rating);
     $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
 
-    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?) AND description LIKE ?;");
+    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?)");
     //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
-    $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax, $namestring]);
+    $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax]);
 
     return $stmt->fetchAll();
 }
@@ -176,12 +176,11 @@ function setURL($name, $priceMin, $priceMax, $rating, $location)
 
 function showFirstPlaceImage($idPlace)
 {
-
     global $db;
-    $statement = $db->prepare('SELECT  title FROM PROPERTY WHERE  idProperty= ?');
+    $statement = $db->prepare('SELECT photo FROM PHOTO WHERE  idProperty= ?');
     $statement->execute([$idPlace]);
     $row = $statement->fetch();
-    $fileName = $row['name'];
+    $fileName = $row['photo'];
 
     if (!trim($fileName)) {
         $fileName = "../assets/default_house.png";
