@@ -1099,6 +1099,15 @@ Search Form
   padding-left: 40px;
 }
 
+.search-date {
+  border: 2px solid white;
+  border-radius: 0px;
+  width: 100%;
+  min-width: 150px;
+  height: 45px;
+  padding-left: 5p;
+}
+
 .button {
   background-color: #34495E;
   border: none;
@@ -1128,7 +1137,7 @@ Search Form
   min-width: 100px;
   height: 45px;
   background: white url(../assets/locationsymbol.png) no-repeat 10px 10px;
-  padding-left: 40px;
+  padding-left: 20px;
 }
 
 /* --------------------------------
