@@ -12,8 +12,7 @@ function showImage($id){
     $fileName = $row['photo'];
 
     echo "<img src=" .$fileName. " />";
-
-
+    
 }
 
 

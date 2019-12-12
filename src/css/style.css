@@ -830,14 +830,14 @@ General Style
 
 .cd-intro-content .action-wrapper {
   display: inline-block;
-  z-index: 3;
+  z-index: 5;
 }
 
 .cd-intro-content .action-wrapper::after {
   clear: both;
   content: "";
   display: table;
-  z-index: 3;
+  z-index: 5;
 }
 
 .cd-intro-content .action-wrapper>* {

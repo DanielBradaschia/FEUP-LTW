@@ -8,10 +8,23 @@
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
     $place = "";
+    $moveIn = "";
+    $moveOut = "";
     $priceMin = 0;
     $priceMax = 2000;
     $rating = "";
     $location = "";
+    if(!empty($_GET['place'])){
+        if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
+            $place = $_GET['place'];
+        }
+    }
+    if(!empty($_GET['movein'])){
+        $moveIn = $_GET['movein'];
+    }
+    if(!empty($_GET['moveout'])){
+        $moveIn = $_GET['moveout'];
+    }
     if(!empty($_GET['place'])){
         if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
             $place = $_GET['place'];
