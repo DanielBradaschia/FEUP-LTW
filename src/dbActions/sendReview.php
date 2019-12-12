@@ -24,7 +24,7 @@ date_default_timezone_set('UTC');
 $currentDate =  date("Y/m/d h:i:s");
 $rate = htmlspecialchars($_POST['rating']);
 
-$idRev = sendReviewToRestaurant($idPlace,$user,$title,$rate,$review,$currentDate);
+$idRev = sendReviewToPlace($idPlace,$user,$title,$rate,$review,$currentDate);
 setRating($idPlace);
 
 

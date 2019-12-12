@@ -8,7 +8,7 @@
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
     include_once "../dbActions/user.php";
-    //include_once "../dbActions/reviewsUtils.php";
+    include_once "../dbActions/reviewUtils.php";
     $_SESSION['token'] = generate_random_token();
     $id = $_GET["id"];
     $userId = "";
@@ -19,6 +19,7 @@
     $location = getPropertyInfoById($id, 'address');
     $description = getPropertyInfoById($id, 'description');
     $rating = getPropertyInfoById($id, 'rate');
+    $price = getPropertyInfoById($id, 'price');
     ?>
     
     <script src="../js/slider.js"></script>
@@ -39,56 +40,64 @@
                         }
                         ?>
                     </div>
+                    <?php printStarsRating($rating)?>
                     <p id="placeName"><?php echo $namePlace ?></p>
                     <p id="placeLocation"><?php echo $location ?></p>
+                    <p id="placePrice"><?php echo $price ?></p>
                     <p id="placeDescription"><?php echo $description ?></p>
+               
+                    <div class="reviews">
+                        <?php
+                        getPlaceReviews($id, getIdByUserName($userId));
+                        ?>
+                    </div>
 
-                <?php
-                 if (isset($userId) && $userId != "")
-                 {
-                     echo '<div class="container">';
-                     
-                     $photo = '../assets/' . getUserPhoto($_SESSION['login-user']);
-
-                     echo '<img id="userPhoto" src=' . $photo . '>';
-                     echo '<form id="formRev" class="reviewForm" action="../dbActions/sendReview.php" method="post"';
-                     echo 'enctype="multipart/form-data">';
-                     echo '<input type="hidden" name="token" id="token" value="' . $_SESSION['token'] . '"/>';
-                     echo '<p class="boxTitle">Write a review:</p>';
-                     echo '<label>Choose a title:</label>';
-                     echo '<input type="text" name="title"><br>';
-                     echo '<label>Write your review:</label>';
-                     echo '​<textarea name="review" id="review" rows="10" cols="70"></textarea>';
-
-                     echo '<fieldset class="ratingSearch">';
-                     echo '<input type="radio" id="star5" name="rating" value="5"/>
-                                <label class="full" for="star5" title="Pretty f\'ing Good - 5 stars"></label>
-
-                            <input type="radio" id="star4" name="rating" value="4"/>
-                                <label class="full" for="star4" title="Pretty Good - 4 stars"></label>
-                            
-                            <input type="radio" id="star3" name="rating" value="3"/>
-                                <label class="full" for="star3" title="Seen Better and Worst - 3 stars"></label>
-                            
-                            <input type="radio" id="star2" name="rating" value="2"/>
-                                <label class="full" for="star2" title="Pretty Bad - 2 stars"></label>
-                            
-                            <input type="radio" id="star1" name="rating" value="1"/>
-                                <label class="full" for="star1" title="Pretty f\'ing Bad - 1 star"></label>
+                    <?php
+                    if (isset($userId) && $userId != "")
+                    {
+                        echo '<div class="container">';
                         
-                            </fieldset>
+                        $photo = '../assets/' . getUserPhoto($_SESSION['login-user']);
 
-                        <br><br>
+                        echo '<img id="userPhoto" src=' . $photo . '>';
+                        echo '<form id="formRev" class="reviewForm" action="../dbActions/sendReview.php" method="post"';
+                        echo 'enctype="multipart/form-data">';
+                        echo '<input type="hidden" name="token" id="token" value="' . $_SESSION['token'] . '"/>';
+                        echo '<p class="boxTitle">Write a review:</p>';
+                        echo '<label>Choose a title:</label>';
+                        echo '<input type="text" name="title"><br>';
+                        echo '<label>Write your review:</label>';
+                        echo '​<textarea name="review" id="review" rows="10" cols="70"></textarea>';
 
-                        <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+                        echo '<fieldset class="ratingSearch">';
+                        echo '<input type="radio" id="star5" name="rating" value="5"/>
+                                    <label class="full" for="star5" title="Pretty f\'ing Good - 5 stars"></label>
 
-                        <br><br>
-                        <input id="submit" type="submit" value="Publish">
-                    </form>
-                    
-                     </div>';
-                 }
-                ?>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                    <label class="full" for="star4" title="Pretty Good - 4 stars"></label>
+                                
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                    <label class="full" for="star3" title="Seen Better and Worst - 3 stars"></label>
+                                
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                    <label class="full" for="star2" title="Pretty Bad - 2 stars"></label>
+                                
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                    <label class="full" for="star1" title="Pretty f\'ing Bad - 1 star"></label>
+                            
+                                </fieldset>
+
+                            <br><br>
+
+                            <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+
+                            <br><br>
+                            <input id="submit" type="submit" value="Publish">
+                        </form>
+                        
+                        </div>';
+                    }
+                    ?>
 
                 </div>    
             </div>
@@ -96,7 +105,7 @@
             <div class="container">
                 <div class="editPlace">
                     <?php
-                        if(isPlaceOwner(getIdByUserName($userId), $id) && $userId != "")
+                        if(isPlaceOwner(getIdByUserName($userId), $id))
                         {
                             echo '<div class="container">';
                                 echo '<div class="addPhotos">';
@@ -141,6 +150,7 @@
                     ?>
                 </div>
             </div>
+
         </div>
 
 

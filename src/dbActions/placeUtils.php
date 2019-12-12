@@ -189,3 +189,25 @@ function showFirstPlaceImage($idPlace)
 
     echo "<img src=" . $fileName . " />";
 }
+
+function printStarsRating($stars)
+{
+    $i = 1;
+    $j = 1;
+    $temp = 5 - $stars;
+
+    echo '<div class = "placeRatingStars">';
+
+    for ($i; $i <= $stars; $i++) {
+        echo '<div class = "star">' . '</div>';
+    }
+
+    for ($j; $j <= $temp; $j++) {
+        echo '<div class = "blackStar">';
+        echo '</div>';
+    }
+
+    echo '</div>';
+
+    return true;
+}

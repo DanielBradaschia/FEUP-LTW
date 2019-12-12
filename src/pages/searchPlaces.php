@@ -90,7 +90,7 @@
                 $placePrice = $row['price'];
                 $placeDescription = $row['description'];
                 $restRating = $row['rate'];
-                $id = getPropertyIdByTitle($placeTitle);
+                $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
 
                 echo '<div class="row">';
 
