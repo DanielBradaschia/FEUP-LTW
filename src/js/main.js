@@ -221,7 +221,7 @@ $( function() {
     slider.slider({
         range: true,
         min: 0,
-        max: 999,
+        max: 2000,
         values: [ slider.attr('min'), slider.attr('max') ],
         slide: function( event, ui ) {
             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );

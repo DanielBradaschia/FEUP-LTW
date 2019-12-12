@@ -8,24 +8,47 @@
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
     $place = "";
+    $moveIn = "";
+    $moveOut = "";
     $priceMin = 0;
     $priceMax = 2000;
     $rating = "";
     $location = "";
-    if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
-        $place = $_GET['place'];
+    if(!empty($_GET['place'])){
+        if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
+            $place = $_GET['place'];
+        }
     }
-    if (preg_match("/[a-zA-Z]/", $_GET['location'])) {
-        $location = $_GET['location'];
+    if(!empty($_GET['movein'])){
+        $moveIn = $_GET['movein'];
     }
-    if (preg_match("/[a-zA-Z0-9]/", $_GET['priceMin'])) {
-        $priceMin = $_GET['priceMin'];
+    if(!empty($_GET['moveout'])){
+        $moveIn = $_GET['moveout'];
     }
-    if (preg_match("/[a-zA-Z0-9]/", $_GET['priceMax'])) {
-        $priceMax = $_GET['priceMax'];
+    if(!empty($_GET['place'])){
+        if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
+            $place = $_GET['place'];
+        }
     }
-    if (preg_match("/[a-zA-Z0-9]/", $_GET['rating'])) {
-        $rating = $_GET['rating'];
+    if(!empty($_GET['location'])){
+        if (preg_match("/[a-zA-Z]/", $_GET['location'])) {
+            $location = $_GET['location'];
+        }
+    }
+    if(!empty($_GET['priceMin'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['priceMin'])) {
+            $priceMin = $_GET['priceMin'];
+        }
+    }
+    if(!empty($_GET['priceMax'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['priceMax'])) {
+            $priceMax = $_GET['priceMax'];
+        }
+    }
+    if(!empty($_GET['rating'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['rating'])) {
+            $rating = $_GET['rating'];
+        }
     }
 
 
@@ -40,7 +63,7 @@
             <div class="container">
                 <section class="filters">
                     <?php
-                    setURL($name, $priceMin, $priceMax, $rating, $location);
+                    setURL($place, $priceMin, $priceMax, $rating, $location);
                     ?>
                     <h2>Price</h2>
                     <p>
@@ -63,8 +86,9 @@
                 echo "<div class=\"container\">";
 
                 $placeTitle = $row['title'];
-                $placeAddress = $row['location'];
+                $placeAddress = $row['address'];
                 $placePrice = $row['price'];
+                $placeDescription = $row['description'];
                 $restRating = $row['rate'];
                 $id = getPropertyIdByTitle($placeTitle);
 
@@ -73,27 +97,20 @@
                 echo '<div class="contentPhoto">';
                 showFirstPlaceImage($id);
                 echo '</div>';
-                echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeName . "</h2>";
+                echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
                 echo '<br>'.'</br>';
                 echo '<br>'.'</br>';
-                echo "<h3>" .$placeLocation."</h3>";
-                echo '<br>'.'</br>';
+                echo "<h4> Address:</h4>";
                 echo "<h1>".$placeAddress."</h1>";
                 echo '<br>'.'</br>';
+                echo "<h4> Description:</h4>";
+                echo "<h1>".$placeDescription."</h1>";
                 echo '</div>';
                 echo '<div class="row">';
-                echo '<br>'.'</br>';
-                echo '<br>'.'</br>';
-
-                echo "<h4> Cost for Two:</h4>";
-
+                echo "<h4> Price:</h4>";
                 $temp = ' - ';
-
                 echo '<h1>'.$placePrice."€".'</h1>';
                 echo '<br>'.'</br>';
-
-                echo '<br>'.'</br>';
-
                 echo '</div>';
                 echo "</div>";
             }
