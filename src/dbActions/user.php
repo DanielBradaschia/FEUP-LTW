@@ -140,7 +140,7 @@ function validatePassword($password){
 
 function getUserPhoto($email){
     global $db;
-    $statement = $db->prepare('SELECT prodilePicture FROM USER WHERE email = ?');
+    $statement = $db->prepare('SELECT profilePicture FROM USER WHERE email = ?');
     $statement->execute([$email]);
     return $statement->fetch()['profilePicture'];
 }

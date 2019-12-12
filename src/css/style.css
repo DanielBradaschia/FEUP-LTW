@@ -13,14 +13,14 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   color: #040404;
   background-color: #F3F3F3;
 }
 
 body h1 {
   font-size: 3.6rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   color: #040404;
   text-align: center;
   padding: 20px;
@@ -206,7 +206,7 @@ Footer
 
 .footer .workdoneby {
   font-size: 1rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   color: #F3F3F3;
   padding-top: 10px;
   padding-left: 30%;
@@ -244,7 +244,7 @@ Header
   align-self: center;
   margin: 2px 10px;
   font-size: 1.6rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   color: #F3F3F3;
   position: relative;
   z-index: 2;
@@ -332,7 +332,7 @@ form#myform input[type="password"],
   background: transparent;
   border: 2px solid #46AC84;
   color: #777;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   font-size: 14px;
   padding: 9px 5px;
   height: 21px;
@@ -1735,7 +1735,7 @@ xcustom form elements
 .cd-filter-block .radio-label::before,
 .cd-filter-block .checkbox-label::before {
   /* shared style for input elements */
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   border-radius: 0;
   background-color: #ffffff;
   border: 2px solid #e6e6e6;
@@ -2122,7 +2122,7 @@ Place Page
 }
 
 #placeName {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   padding-top: 10px;
   padding-left: 5px;
   font-size: x-large;
@@ -2130,7 +2130,7 @@ Place Page
 }
 
 #placeLocation {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   padding-top: 10px;
   padding-left: 5px;
   font-size: medium;
@@ -2146,7 +2146,7 @@ Place Page
   margin-left: 20px;
   border-radius: 2px;
   align-content: center;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .removePlace button,
@@ -2214,7 +2214,7 @@ Place Page
   line-height: 25px;
   font-size: 16px;
   padding: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .editPlaceForm label {
@@ -2224,16 +2224,7 @@ Place Page
   color: #B9B9B9;
   font-size: 14px;
   overflow: hidden;
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-addPlacePhotoForm {
-  max-width: 600px;
-  margin: 50px auto;
-  margin-left: 30%;
-  border-radius: 2px;
-  padding: 20px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .addPlacePhotoForm button,
@@ -2294,7 +2285,7 @@ addPlacePhotoForm {
   margin: 5px;
   line-height: 25px;
   font-size: 16px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .reviewForm button,
@@ -2327,7 +2318,7 @@ addPlacePhotoForm {
   margin: 5px;
   line-height: 25px;
   font-size: 16px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 #reviewArea {
@@ -2340,7 +2331,7 @@ addPlacePhotoForm {
   margin: 5px;
   line-height: 25px;
   font-size: 16px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .reviewForm label {
@@ -2349,11 +2340,11 @@ addPlacePhotoForm {
   color: #B9B9B9;
   font-size: 14px;
   overflow: hidden;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .boxTitle {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   padding-top: 10px;
   padding-bottom: 20px;
   font-size: medium;
@@ -2399,7 +2390,7 @@ addPlacePhotoForm {
 
 .rating>label:before {
   font-size: 1.5em;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   display: inline-block;
   content: "\f005";
 }
@@ -2434,7 +2425,7 @@ addPlacePhotoForm {
 
 .reviewRating>label:before {
   font-size: 1.5em;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   display: inline-block;
   content: "\f005";
 }
@@ -2469,7 +2460,7 @@ Place Search Pages
   border-radius: 4px;
   padding: 10px 10px 10px 10px;
   font-size: 1.6rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .placeSearchPage .container .row:first-child {
@@ -2613,7 +2604,7 @@ Place Search Pages
 .ratingSearch>label:before {
   margin: 5px;
   font-size: 1.25em;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Andale Mono", monospace;
   display: inline-block;
   content: "\f005";
 }
