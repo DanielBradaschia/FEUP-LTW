@@ -26,7 +26,7 @@ include_once "header.php";
         </section> <!-- cd-intro http://localhost:8000/index.php -->
 
         <?php
-            include_once "../dbActions/searchBar.php";
+            include "../dbActions/searchBar.php";
         ?>
 
         <div class="cd-bg-video-wrapper" data-video="../assets/video2">
