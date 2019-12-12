@@ -11,7 +11,9 @@
     //include_once "../dbActions/reviewsUtils.php";
     $_SESSION['token'] = generate_random_token();
     $id = $_GET["id"];
-    $userId = $_SESSION['login-user'];
+    $userId = "";
+    if(!empty($_SESSION['login-user']))
+        $userId = $_SESSION['login-user'];
     $_SESSION['restID'] = $id;
     $namePlace = getPropertyInfoById($id, 'title');
     $location = getPropertyInfoById($id, 'address');
@@ -42,7 +44,7 @@
                     <p id="placeDescription"><?php echo $description ?></p>
 
                 <?php
-                 if (isset($_SESSION["login-user"]))
+                 if (isset($userId) && $userId != "")
                  {
                      echo '<div class="container">';
                      
@@ -94,7 +96,7 @@
             <div class="container">
                 <div class="editPlace">
                     <?php
-                        if(isPlaceOwner(getIdByUserName($userId), $id))
+                        if(isPlaceOwner(getIdByUserName($userId), $id) && $userId != "")
                         {
                             echo '<div class="container">';
                                 echo '<div class="addPhotos">';
