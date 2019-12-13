@@ -29,7 +29,7 @@ include_once "header.php";
             include "../dbActions/searchBar.php";
         ?>
 
-        <div class="cd-bg-video-wrapper" data-video="../assets/video2">
+        <div class="cd-bg-video-wrapper" data-video="../assets/video">
             <!-- video element will be loaded using jQuery -->
         </div>
     </div>
