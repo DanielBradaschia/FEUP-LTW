@@ -45,7 +45,26 @@
                     <p id="placeLocation"><?php echo $location ?></p>
                     <p id="placePrice"><?php echo $price ?></p>
                     <p id="placeDescription"><?php echo $description ?></p>
-               
+
+                    <div class="rent">
+                        <?php
+                            echo '<button class="rent-button" id="btnCreateAccount" onclick="visibleRent()">RENT</button>';
+                        ?>
+                    </div>
+
+                    <div id="rent-form" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <h1>RENT</h1>
+                            <form action="../dbActions/login.php" method="post">
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password" placeholder="Password">
+                                <input type="submit" value="Login">
+                            </form>
+                            <span class="close" onclick="exitRent()">x</span>
+                        </div>
+                    </div>
+
                     <div class="reviews">
                         <?php
                         getPlaceReviews($id, getIdByUserName($userId));

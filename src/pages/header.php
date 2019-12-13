@@ -67,8 +67,6 @@ $_SESSION['signup-token'] = generate_random_token();
             </div>
         </div>
 
-
-
         <div id="login-form" class="modal">
             <!-- Modal content -->
             <div class="modal-content">

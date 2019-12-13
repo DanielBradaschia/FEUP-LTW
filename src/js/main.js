@@ -207,6 +207,14 @@ function exitCreateAcc() {
     $("#createAcc-form").hide();
 }
 
+function visibleRent() {
+    $("#rent-form").show();
+}
+
+function exitRent() {
+    $("#rent-form").hide();
+}
+
 function exitUser() {
     session_destroy();
 }
