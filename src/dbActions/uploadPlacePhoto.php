@@ -15,7 +15,7 @@ for ($i = 0; $i < count($_FILES['fileToUpload']['name']); $i++) {
     $target_path = $target_path.md5(uniqid()). ".".$ext[count($ext) - 1]; //set the target path with a new name of image
     $j = $j + 1; //increment the number of uploaded images according to the files in array
 
-    if (($_FILES["fileToUpload"]["size"][$i] < 100000) && in_array($file_extension, $validextensions)) {
+    if (($_FILES["fileToUpload"]["size"][$i] < 100000000) && in_array($file_extension, $validextensions)) {
         $target_file = $target_path.$_FILES["fileToUpload"]["name"][$i];
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i],$target_file);
         uploadPhoto($target_file,$id);
