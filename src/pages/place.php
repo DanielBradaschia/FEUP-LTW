@@ -57,9 +57,11 @@
                         <div class="modal-content">
                             <h1>RENT</h1>
                             <form action="../dbActions/login.php" method="post">
-                                <input type="email" name="email" placeholder="Email">
-                                <input type="password" name="password" placeholder="Password">
-                                <input type="submit" value="Login">
+                                <label>Check In: 
+                                <input type="date" name="checkIn" min="2019-12-14"/>
+                                <label>Check Out: 
+                                <input type="date" name="checkOut"/>
+                                <input type="submit" value="RENT">
                             </form>
                             <span class="close" onclick="exitRent()">x</span>
                         </div>

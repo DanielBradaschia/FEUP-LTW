@@ -2,7 +2,6 @@
 session_start();
 include_once('config.php');
 
-
 function login($email, $password) {
     global $db;
     $statement = $db->prepare('SELECT idUser,password,name FROM USER WHERE email = ? ');
