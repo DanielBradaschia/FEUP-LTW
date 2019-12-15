@@ -56,11 +56,18 @@
                         <!-- Modal content -->
                         <div class="modal-content">
                             <h1>RENT</h1>
-                            <form action="../dbActions/login.php" method="post">
+                            <form action="../dbActions/rent.php" method="post">
                                 <label>Check In: 
                                 <input type="date" name="checkIn" min="2019-12-14"/>
                                 <label>Check Out: 
                                 <input type="date" name="checkOut"/>
+                                <label>Payment Method:
+                                <select name="payment">
+                                    <option value="PayPal">PayPal</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Add more options">Add more options</option>
+                                </select>
                                 <input type="submit" value="RENT">
                             </form>
                             <span class="close" onclick="exitRent()">x</span>

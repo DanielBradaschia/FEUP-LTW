@@ -76,6 +76,14 @@ function getUserInfoByUserName($email,$info){
     return $statement->fetch()[$info];
 }
 
+function getIdUserByEmail($email){
+    global $db;
+    $statement = $db->prepare('SELECT IDUSER FROM USER WHERE email = ? ');
+    $statement->execute([$email]);
+
+    return $statement->fetch()['idUser'];
+}
+
 function updateUserProfile($email,$newEmail,$newName,$data,$gender,$cellphone, $password){
 
     if(!trim($newName))
