@@ -3,13 +3,16 @@
 <?php
 
 include_once 'user.php';
+include_once 'placeUtils.php';
 
 $moveIn = htmlspecialchars($_POST['checkIn']);
 $moveOut = htmlspecialchars($_POST['checkOut']);
 $idUser = getIdUserByEmail(htmlspecialchars($_SESSION['login-user']));
 $payment = htmlspecialchars($_POST['payment']);
-$idProperty = 1;
-$price = 75;
+$idProperty = htmlspecialchars($_SESSION['restID']);
+$price = getPropertyInfoById($idProperty, 'price');
+//$idProperty = 3;
+//$price = 70;
 
 /*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
     header('HTTP/1.0 403 Forbidden');
@@ -23,7 +26,7 @@ if($moveIn && $moveOut){
             rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price);
         }
         else {
-            //erro
+            echo 'Must select a payment method';
         }
     }
 }
@@ -49,6 +52,8 @@ else{
 
 function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
     global $db;
+
+    $email = getUserInfo($idUser, 'email');
 
     $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, rate, price) VALUES (?,?,?,?,?,?,?)');
 

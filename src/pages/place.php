@@ -48,9 +48,12 @@
 
                     <div class="rent">
                         <?php
+                        if (isset($_SESSION['login-user'])) {
                             echo '<button class="rent-button" id="btnCreateAccount" onclick="visibleRent()">RENT</button>';
+                        }
                         ?>
                     </div>
+
 
                     <div id="rent-form" class="modal">
                         <!-- Modal content -->
