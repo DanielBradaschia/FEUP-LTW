@@ -4,10 +4,12 @@
 
 include_once 'user.php';
 
-$checkIn = htmlspecialchars($_POST['checkIn']);
-$checkOut = htmlspecialchars($_POST['checkOut']);
+$moveIn = htmlspecialchars($_POST['checkIn']);
+$moveOut = htmlspecialchars($_POST['checkOut']);
 $idUser = getIdUserByEmail(htmlspecialchars($_SESSION['login-user']));
 $payment = htmlspecialchars($_POST['payment']);
+$idProperty = 1;
+$price = 75;
 
 /*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
     header('HTTP/1.0 403 Forbidden');
@@ -15,15 +17,14 @@ $payment = htmlspecialchars($_POST['payment']);
 }
 $_SESSION['token'] = generate_random_token();*/
 
-echo $checkIn;
-echo $checkOut;
-echo $idUser;
-echo '   ';
-echo $payment;
-
-if($checkIn && $checkOut){
-    if($checkIn < $checkOut){
-
+if($moveIn && $moveOut){
+    if($moveIn < $moveOut){
+        if($payment != 'Select'){
+            rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price);
+        }
+        else {
+            //erro
+        }
     }
 }
 
@@ -46,12 +47,12 @@ else{
     $_SESSION["ERROR"] = "You must fill at least Email and Password Field ! ";
 }*/
 
-/*function rent($email, $name, $type, $password, $gender, $bithdate, $cellphone){
+function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
     global $db;
 
     $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, rate, price) VALUES (?,?,?,?,?,?,?)');
 
-    if($statement->execute([$idUser, $idProperty, $, $gender, $bithdate, $cellphone, $photo, $type])){
+    if($statement->execute([$idUser, $idProperty, $moveIn, $moveOut, $payment, NULL, $price])){
         $_SESSION['login-user']=$email;
         unset($_SESSION["ERROR"]);
         header("location:../pages/index.php");
@@ -59,6 +60,6 @@ else{
     }
     else{
         echo $email;
-        $_SESSION["ERROR"] = "Error on sign Up";
+        $_SESSION["ERROR"] = "Error on rent";
     }
-}*/
+}

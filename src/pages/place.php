@@ -63,6 +63,7 @@
                                 <input type="date" name="checkOut"/>
                                 <label>Payment Method:
                                 <select name="payment">
+                                    <option value="Select">Select</option>
                                     <option value="PayPal">PayPal</option>
                                     <option value="Credit Card">Credit Card</option>
                                     <option value="Debit Card">Debit Card</option>
