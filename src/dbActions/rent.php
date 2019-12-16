@@ -70,9 +70,9 @@ function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
 
     $email = getUserInfo($idUser, 'email');
 
-    $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, rate, price) VALUES (?,?,?,?,?,?,?)');
+    $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, price) VALUES (?,?,?,?,?,?)');
 
-    if($statement->execute([$idUser, $idProperty, $moveIn, $moveOut, $payment, NULL, $price])){
+    if($statement->execute([$idUser, $idProperty, $moveIn, $moveOut, $payment, $price])){
         $_SESSION['login-user']=$email;
         unset($_SESSION["ERROR"]);
         header("location:../pages/index.php");
