@@ -18,8 +18,8 @@ function placeAlreadyExists($address){
 function addPlaceToUser($title, $address, $price, $description, $id){
     global $db;
 
-    $statement = $db->prepare('INSERT INTO PROPERTY (idOwner, address, title, price, description) VALUES (?,?,?,?,?)');
-    if($statement->execute([$id, $address, $title, $price, $description])){
+    $statement = $db->prepare('INSERT INTO PROPERTY (idOwner, address, title, price, description, rate) VALUES (?,?,?,?,?,?)');
+    if($statement->execute([$id, $address, $title, $price, $description,0])){
         return true;
     }
     else
