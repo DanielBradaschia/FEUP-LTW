@@ -12,6 +12,8 @@
     $moveOut = "";
     $priceMin = 0;
     $priceMax = 2000;
+    $rateMin = 0;
+    $rateMax = 5;
     $rating = "";
     $location = "";
     if(!empty($_GET['place'])){
@@ -45,9 +47,14 @@
             $priceMax = $_GET['priceMax'];
         }
     }
-    if(!empty($_GET['rating'])){
-        if (preg_match("/[a-zA-Z0-9]/", $_GET['rating'])) {
-            $rating = $_GET['rating'];
+    if(!empty($_GET['rateMin'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['rateMin'])) {
+            $rating = $_GET['rateMin'];
+        }
+    }
+    if(!empty($_GET['rateMax'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['rateMax'])) {
+            $rating = $_GET['rateMax'];
         }
     }
 
@@ -75,13 +82,12 @@
                     ?>
                     <label id="minValue"></label>
                     <label id="maxValue"></label>
-
                 </section>
             </div>
         </div>
         <div class="main">
             <?php
-            $result = getPlace($place, $priceMin, $priceMax, $rating, $location);
+            $result = getPlace($place, $priceMin, $priceMax, $rateMin, $rateMax, $location);
             foreach ($result as $row) {
                 echo "<div class=\"container\">";
 
@@ -110,6 +116,7 @@
                 echo "<h4> Price:</h4>";
                 $temp = ' - ';
                 echo '<h1>'.$placePrice."€".'</h1>';
+                printStarsRating($restRating);
                 echo '<br>'.'</br>';
                 echo '</div>';
                 echo "</div>";

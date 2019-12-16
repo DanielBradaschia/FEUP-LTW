@@ -137,19 +137,17 @@ function isPlaceOwner($userId, $placeId)
 
     return false;
 }
-function getPlace($name, $priceMin, $priceMax, $rating, $location)
+function getPlace($name, $priceMin, $priceMax, $rateMin, $rateMax, $location)
 {
     global $db;
     $namekeywords = explode('%20', $name);
     $namestring = '%' . implode('% OR LIKE %', $namekeywords) . '%';
     $locationkeywords = explode('%20', $location);
     $locationstring = '%' . implode('% OR LIKE %', $locationkeywords) . '%';
-    $ratingkeywords = explode('%20', $rating);
-    $ratingstring = '%' . implode('% OR LIKE %', $ratingkeywords) . '%';
 
-    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?)");
+    $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?) AND (rate BETWEEN ? AND ?)");
     //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
-    $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax]);
+    $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax, $rateMin, $rateMax]);
 
     return $stmt->fetchAll();
 }

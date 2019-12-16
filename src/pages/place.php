@@ -48,7 +48,7 @@
 
                     <div class="rent">
                         <?php
-                        if (isset($_SESSION['login-user'])) {
+                        if (!(isPlaceOwner(getIdByUserName($userId), $id)) && $userId != ""){
                             echo '<button class="rent-button" id="btnCreateAccount" onclick="visibleRent()">RENT</button>';
                         }
                         ?>
