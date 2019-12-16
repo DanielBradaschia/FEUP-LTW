@@ -11,8 +11,10 @@ $idUser = getIdUserByEmail(htmlspecialchars($_SESSION['login-user']));
 $payment = htmlspecialchars($_POST['payment']);
 $idProperty = htmlspecialchars($_SESSION['restID']);
 $price = getPropertyInfoById($idProperty, 'price');
-//$idProperty = 3;
-//$price = 70;
+
+$actualTime = actualDate();
+
+echo $actualTime;
 
 /*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
     header('HTTP/1.0 403 Forbidden');
@@ -26,9 +28,18 @@ if($moveIn && $moveOut){
             rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price);
         }
         else {
-            echo 'Must select a payment method';
+            header("Location:".$_SERVER['HTTP_REFERER']."");
+            $_SESSION["ERROR"] = "You must select a payment method";
         }
     }
+    else {
+        header("Location:".$_SERVER['HTTP_REFERER']."");
+        $_SESSION["ERROR"] = "Error in dates";
+    }
+}
+else {
+    header("Location:".$_SERVER['HTTP_REFERER']."");
+        $_SESSION["ERROR"] = "Please select Check in date and Check out date";
 }
 
 /*if($email && $password){
