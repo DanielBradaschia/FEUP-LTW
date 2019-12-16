@@ -1,4 +1,6 @@
-<script src="../js/main.js"></script>
+<script type="text/javascript" src="../js/main.js" language="javascript" >
+  var data = actualDate();
+  </script>
 
 <?php
 
@@ -12,9 +14,11 @@ $payment = htmlspecialchars($_POST['payment']);
 $idProperty = htmlspecialchars($_SESSION['restID']);
 $price = getPropertyInfoById($idProperty, 'price');
 
-$actualTime = actualDate();
-
-echo $actualTime;
+echo '<script type="text/javascript">',
+     'actualDate();',
+     '</script>'
+;
+echo $actualTime = data;
 
 /*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
     header('HTTP/1.0 403 Forbidden');
