@@ -5,6 +5,7 @@ $title = "Welcome";      // Set the title
 include_once "header.php";
 include_once "../dbActions/user.php";
 include_once "../dbActions/placeUtils.php";
+include_once "../dbActions/rentUtils.php";
 
 // Generate token for the update action
 $_SESSION['token'] = generate_random_token();
@@ -98,6 +99,25 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                     echo '</div>';
                 echo '</div>';
                 }
+
+                echo '<div class="container">';
+                    echo '<div class="userRest">';
+                        echo '<h1 id="editProfile" style="text-align: center">Your Rents</h1>';
+                        $rent = getRentsByUser(getUserInfoByUserName($username, 'idUser'));
+                        foreach ($rent as $row) {
+                            $title = getPropertyInfoById($row['idProperty'], 'title');
+                            $checkin = $row['moveIn'];
+                            $checkout = $row['moveOut'];
+                            echo '<div class="placeList">';
+                            echo $title;
+                            echo ' ';
+                            echo $checkin;
+                            echo ' ';
+                            echo $checkout;
+                            echo '</div>';
+                            }
+                    echo '</div>';
+                echo '</div>';
             ?>
         </div>
     </div>
