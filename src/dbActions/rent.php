@@ -6,6 +6,7 @@
 
 include_once 'user.php';
 include_once 'placeUtils.php';
+include_once 'rentUtils.php';
 
 $moveIn = htmlspecialchars($_POST['checkIn']);
 $moveOut = htmlspecialchars($_POST['checkOut']);
@@ -64,7 +65,7 @@ function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
 
     $email = getUserInfo($idUser, 'email');
     $check = true;
-    $rent = getRent($idProperty);
+    $rent = getRentsByProperty($idProperty);
 
     foreach ($rent as $row) {
         $checkin = $row['moveIn'];
