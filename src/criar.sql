@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS RENT (
     moveIn DATE,
     moveOut DATE,
     payment TEXT NOT NULL,
-    rate NUMERIC,
     price NUMERIC NOT NULL
 );
 
@@ -66,5 +65,6 @@ CREATE TABLE IF NOT EXISTS PROPERTY (
     title TEXT,
     price FLOAT,
     description TEXT,
-    rate NUMERIC
+    rate NUMERIC,
+    available BLOP
 );
