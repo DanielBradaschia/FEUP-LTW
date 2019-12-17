@@ -86,11 +86,11 @@ function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
             exit();
         }
         else{
-            echo $email;
+            header("Location:".$_SERVER['HTTP_REFERER']."");
             $_SESSION["ERROR"] = "Error on rent";
         }
     } else {
-        echo "Invalid Dates";
+        header("Location:".$_SERVER['HTTP_REFERER']."");
         $_SESSION["ERROR"] = "Invalid Dates";
     }
 }
