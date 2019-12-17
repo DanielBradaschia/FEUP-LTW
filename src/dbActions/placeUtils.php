@@ -209,3 +209,13 @@ function printStarsRating($stars)
 
     return true;
 }
+
+function getRent($idProperty)
+{
+    global $db;
+
+    $stmt = $db->prepare('SELECT * FROM RENT WHERE idProperty = ?');
+    $stmt->execute([$idProperty]);
+
+    return $stmt->fetchAll();
+}

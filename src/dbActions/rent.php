@@ -14,12 +14,6 @@ $payment = htmlspecialchars($_POST['payment']);
 $idProperty = htmlspecialchars($_SESSION['restID']);
 $price = getPropertyInfoById($idProperty, 'price');
 
-echo '<script type="text/javascript">',
-     'actualDate();',
-     '</script>'
-;
-echo $actualTime = data;
-
 /*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
     header('HTTP/1.0 403 Forbidden');
     die();
@@ -69,17 +63,34 @@ function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
     global $db;
 
     $email = getUserInfo($idUser, 'email');
+    $check = true;
+    $rent = getRent($idProperty);
 
-    $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, price) VALUES (?,?,?,?,?,?)');
+    foreach ($rent as $row) {
+        $checkin = $row['moveIn'];
+        $checkout = $row['moveOut'];
 
-    if($statement->execute([$idUser, $idProperty, $moveIn, $moveOut, $payment, $price])){
-        $_SESSION['login-user']=$email;
-        unset($_SESSION["ERROR"]);
-        header("location:../pages/index.php");
-        exit();
+        if($checkin <= $moveOut && $checkout >= $moveIn){
+            $check = false;
+            break;
+        }
     }
-    else{
-        echo $email;
-        $_SESSION["ERROR"] = "Error on rent";
+
+    if($check == true){
+        $statement = $db->prepare('INSERT INTO RENT (idUser, idProperty, moveIn, moveOut, payment, price) VALUES (?,?,?,?,?,?)');
+
+        if($statement->execute([$idUser, $idProperty, $moveIn, $moveOut, $payment, $price])){
+            $_SESSION['login-user']=$email;
+            unset($_SESSION["ERROR"]);
+            header("location:../pages/index.php");
+            exit();
+        }
+        else{
+            echo $email;
+            $_SESSION["ERROR"] = "Error on rent";
+        }
+    } else {
+        echo "Invalid Dates";
+        $_SESSION["ERROR"] = "Invalid Dates";
     }
 }
