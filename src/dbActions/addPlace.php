@@ -16,8 +16,8 @@ if(placeAlreadyExists($placeAddress))
     header("Location:".$_SERVER['HTTP_REFERER']."");
     $_SESSION["ERROR"] = "This address is already registered for rental!";
 }
-
-addPlaceToUser($placeTitle, $placeAddress, $price, $description, getUserInfoByUserName($username, 'idUser'));
+else
+    addPlaceToUser($placeTitle, $placeAddress, $price, $description, getUserInfoByUserName($username, 'idUser'));
 
 for ($i = 0; $i < count($_FILES['fileToUpload']['name']); $i++) {
     $j = 0; //Variable for indexing uploaded image

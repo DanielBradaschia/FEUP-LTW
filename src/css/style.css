@@ -222,7 +222,8 @@ Header
   flex-wrap: wrap;
   justify-content: space-between;
   background: #34495E;
-  height: 70px;
+  height: 10%;
+  padding: 0.5em 0;
 }
 
 .header .header-left-icon {
@@ -233,8 +234,8 @@ Header
 }
 
 .header .logo {
-  height: 1.8cm;
-  width: 4.6cm;
+  height: 1.5cm;
+  width: 3.5cm;
   margin-left: 40px;
 }
 
@@ -794,6 +795,9 @@ Stretchy Nav style - common to:
 /* --------------------------------
 General Style
 -------------------------------- */
+#login-form{
+  z-index: 9999999;
+}
 .cd-intro {
   position: relative;
   height: 70vh;
@@ -911,15 +915,6 @@ General Style
 .no-cssanimations .cd-intro-content p,
 .no-cssanimations .cd-intro-content .cd-btn {
   opacity: 1;
-}
-
-logo {
-  position: absolute;
-  display: block;
-  left: 50%;
-  top: 10%;
-  height: 10cm;
-  width: 15cm;
 }
 
 /* --------------------------------
@@ -1140,18 +1135,18 @@ Search Form
   padding-left: 20px;
 }
 
-/* --------------------------------
-Quick Services
--------------------------------- */
-.advertisement-services {
-  display: -webkit-flex;
-  display: flex;
-  text-align: center;
-}
-
 /*----------------------------------
   Edit-Profile
  -----------------------------------*/
+.profilePage {
+ display: flex;
+ flex-flow: row wrap;
+ margin-top: 1em;
+}
+
+.profilePage .main {
+  width: 30%;
+}
 .img-item {
   border-radius: 50%;
   border: 2px solid #34495E;
@@ -1259,7 +1254,7 @@ Quick Services
   background-color: transparent;
 }
 
-.editProfileForm inputGender {
+.editProfileForm .inputGender {
   font-family: "Andale Mono", monospace;
 }
 
@@ -1317,6 +1312,101 @@ Quick Services
 .userRest .placeList a {
   background-color: transparent;
   padding: 5px;
+}
+
+.owned {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center !important;
+  width: 70%;
+  padding: 0 1em;
+}
+
+.related {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+ }
+
+.owned .container {
+  align-self: center;
+  margin-bottom: 1em;
+  background-color: #ffffff;
+  padding: 0 10px;
+  font-size: 1.6rem;
+  font-family: "Andale Mono", monospace;
+  width: 32.5%;
+  height: 100%;
+}
+
+.owned .container .row:first-child {
+  border-bottom: 1px solid lightgrey;
+}
+
+.owned .container .row {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.owned .container .row .contentPhoto {
+  height: 200px;
+  width: 100%;
+  /*height: 183px;
+  width: 275px;*/
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 10px;
+}
+
+.owned .container .row img {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  object-fit: cover;
+}
+
+.owned .container .row h2 {
+  cursor: pointer;
+  font-weight: bold;
+  color: #34495E;
+  font-size: 20px;
+  padding: 5px;
+  padding-left: 20px;
+  float: left;
+}
+
+.owned .container .row h3 {
+  color: grey;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px;
+  padding-left: 20px;
+  float: left;
+}
+
+.owned .container .row h1 {
+  color: grey;
+  font-size: 13px;
+  padding: 5px;
+  padding-left: 20px;
+  float: left;
+}
+
+.owned .container .row h4 {
+  font-weight: bold;
+  color: dimgrey;
+  font-size: 13px;
+  padding: 5px;
+  padding-left: 20px;
+  float: left;
 }
 
 /*----------------------------------
@@ -2539,24 +2629,6 @@ Place Search Pages
   color: grey;
   font-weight: bold;
   font-size: 16px;
-  padding: 5px;
-  padding-left: 20px;
-  float: left;
-}
-
-.placeSearchPage .container .row #openNow {
-  color: #448025;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 5px;
-  padding-left: 20px;
-  float: left;
-}
-
-.placeSearchPage .container .row #closeNow {
-  color: #80271e;
-  font-weight: bold;
-  font-size: 14px;
   padding: 5px;
   padding-left: 20px;
   float: left;

@@ -31,13 +31,14 @@ function getPlaceByOwnerId($id){
         global $db;
         $statement = $db->prepare('SELECT * FROM PROPERTY WHERE IdOwner = ? ');
         $statement->execute([$id]);
-
+    /*
         while ($row = $statement->fetch()) {
             echo '<div class="placeList">';
-                echo '<a href="place.php?id=' . $row['idProperty'] . '">' . $row['title'] . '</a>';
+            echo '<a href="place.php?id=' . $row['idProperty'] . '">' . $row['title'] . '</a>';
             echo '</div>';
         }
-        return true;
+    */
+        return $statement->fetchAll();
 }
 
 function uploadPhoto($target_file, $id)
@@ -184,8 +185,8 @@ function showFirstPlaceImage($idPlace)
         $fileName = "../assets/default_house.png";
         echo "<img src=" . $fileName . " />";
     }
-
-    echo "<img src=" . $fileName . " />";
+    else
+        echo "<img src=" . $fileName . " />";
 }
 
 function printStarsRating($stars)

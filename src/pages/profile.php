@@ -78,49 +78,81 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                         <input type="submit" value="Save Changes">
                         <button class="button-item" type="button" onclick="location.href='index.php';">Cancel</button>
                     </li>
-
                 </ul>
             </form>
-        </div>
-    </div>
-    <div class="related">
-        <?php
-            if ($type == 'Owner') {
-                echo '<div class="container">';
-                    echo '<div class="userRest">';
-                        echo '<h1 id="editProfile" style="text-align: center">Your Places</h1>';
-                        getPlaceByOwnerId(getUserInfoByUserName($username, 'idUser'));
-                    echo '</div>';
-                echo '</div>';
-                echo '<div class="container">';
-                    echo '<div class="ownerColumn">';
-                        echo 'Can\'t find your Places?' . '<br>' . '<br>';
-                        echo '<button id="button-add" class="button-item" type="button" onclick="location.href=\'addPlace.php\';">Add a Place</button>';
-                    echo '</div>';
-                echo '</div>';
-                }
 
-                echo '<div class="container">';
-                    echo '<div class="userRest">';
-                        echo '<h1 id="editProfile" style="text-align: center">Your Rents</h1>';
-                        $rent = getRentsByUser(getUserInfoByUserName($username, 'idUser'));
-                        foreach ($rent as $row) {
-                            $title = getPropertyInfoById($row['idProperty'], 'title');
-                            $checkin = $row['moveIn'];
-                            $checkout = $row['moveOut'];
-                            echo '<div class="placeList">';
-                            echo $title;
-                            echo ' ';
-                            echo $checkin;
-                            echo ' ';
-                            echo $checkout;
-                            echo '</div>';
-                            }
-                    echo '</div>';
+            <?php
+                echo '<div class="ownerColumn">';
+                    echo 'Can\'t find your Places?' . '<br>' . '<br>';
+                    echo '<button id="button-add" class="button-item" type="button" onclick="location.href=\'addPlace.php\';">Add a Place</button>';
                 echo '</div>';
+                
+                    echo '<div class="container">';
+                        echo '<div class="userRest">';
+                            echo '<h1 id="editProfile" style="text-align: center">Your Rents</h1>';
+                            $rent = getRentsByUser(getUserInfoByUserName($username, 'idUser'));
+                            foreach ($rent as $row) {
+                                $title = getPropertyInfoById($row['idProperty'], 'title');
+                                $checkin = $row['moveIn'];
+                                $checkout = $row['moveOut'];
+                                echo '<div class="placeList">';
+                                echo $title;
+                                echo ' ';
+                                echo $checkin;
+                                echo ' ';
+                                echo $checkout;
+                                echo '</div>';
+                                }
+                        echo '</div>';
+
+                    echo '</div>';
             ?>
+
         </div>
     </div>
+    <div class="owned">
+        <div class="related">
+            <?php
+                if ($type == 'Owner') {
+                    $result = getPlaceByOwnerId(getUserInfoByUserName($username, 'idUser'));
+                    foreach ($result as $row) {
+                        echo "<div class=\"container\">";
+
+                        $placeTitle = $row['title'];
+                        $placeAddress = $row['address'];
+                        $placePrice = $row['price'];
+                        $placeDescription = $row['description'];
+                        $restRating = $row['rate'];
+                        $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
+
+                        echo '<div class="row">';
+
+                        echo '<div class="contentPhoto">';
+                        showFirstPlaceImage($id);
+                        echo '</div>';
+                        echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
+
+                        echo "<h4> Address:</h4>";
+                        echo "<h1>".$placeAddress."</h1>";
+
+                        echo "<h4> Description:</h4>";
+                        echo "<h1>".$placeDescription."</h1>";
+                        echo '</div>';
+                        echo '<div class="row">';
+                        echo "<h4> Price: ".$placePrice."€</h4>";
+                        $temp = ' - ';
+                        printStarsRating($restRating);
+
+                        echo '</div>';
+                        echo "</div>";
+                    }
+
+                }
+        
+                ?>
+            </div>
+        </div>
+    </div>    
 </div>
 
 <?php
