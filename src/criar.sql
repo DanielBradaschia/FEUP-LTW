@@ -65,6 +65,27 @@ CREATE TABLE IF NOT EXISTS PROPERTY (
     title TEXT,
     price FLOAT,
     description TEXT,
-    rate NUMERIC,
-    available BLOP
+    rate NUMERIC
 );
+
+
+DROP TABLE IF EXISTS REVIEWS;
+CREATE TABLE IF NOT EXISTS REVIEWS(
+    idReviews INTEGER PRIMARY KEY,
+    idProperty INTEGER REFERENCES PROPERTY (idProperty),
+    idUser INTEGER REFERENCES USER (idUser),
+    title TEXT,
+    userRate INTEGER,
+    text TEXT,
+    likes INTEGER,
+    date DATE
+);
+
+DROP TABLE IF EXISTS REVIEWPHOTO;
+CREATE TABLE IF NOT EXSITS REVIEWPHOTO(
+    idReviewPhoto INTEGER PRIMARY KEY,
+    name TEXT,
+    idProperty INTEGER REFERENCES PROPERTY (idProperty),
+    idReview INTEGER REFERENCES REVIEWS (idReviews)
+);
+

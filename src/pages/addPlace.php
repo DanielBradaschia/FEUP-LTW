@@ -23,8 +23,8 @@ $_SESSION['token'] = generate_random_token();
         
         <div class="container">
         <li>
-            <label for="Price">Price per day</label>
-            <input placeholder="€/ day" name="price" class="form-control" type="text"><br>
+            <label for="Price">Price per month</label>
+            <input placeholder="€/ month" name="price" class="form-control" type="text"><br>
         </li>
         </div>
 
