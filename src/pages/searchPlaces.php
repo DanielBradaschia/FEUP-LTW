@@ -7,6 +7,7 @@
 
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
+    include_once "../dbActions/rentUtils.php";
     $place = "";
     $moveIn = "";
     $moveOut = "";
@@ -25,7 +26,7 @@
         $moveIn = $_GET['movein'];
     }
     if(!empty($_GET['moveout'])){
-        $moveIn = $_GET['moveout'];
+        $moveOut = $_GET['moveout'];
     }
     if(!empty($_GET['place'])){
         if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
@@ -98,28 +99,43 @@
                 $restRating = $row['rate'];
                 $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
 
-                echo '<div class="row">';
+                $check = true;
+                $rent = getRentsByProperty($id);
 
-                echo '<div class="contentPhoto">';
-                showFirstPlaceImage($id);
-                echo '</div>';
-                echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
-                echo '<br>'.'</br>';
-                echo '<br>'.'</br>';
-                echo "<h4> Address:</h4>";
-                echo "<h1>".$placeAddress."</h1>";
-                echo '<br>'.'</br>';
-                echo "<h4> Description:</h4>";
-                echo "<h1>".$placeDescription."</h1>";
-                echo '</div>';
-                echo '<div class="row">';
-                echo "<h4> Price:</h4>";
-                $temp = ' - ';
-                echo '<h1>'.$placePrice."€".'</h1>';
-                printStarsRating($restRating);
-                echo '<br>'.'</br>';
-                echo '</div>';
-                echo "</div>";
+                foreach ($rent as $row) {
+                    $checkin = $row['moveIn'];
+                    $checkout = $row['moveOut'];
+
+                    if($checkin <= $moveOut && $checkout > $moveIn){
+                        $check = false;
+                        break;
+                    }
+                }
+
+                if($check == true){
+                    echo '<div class="row">';
+
+                    echo '<div class="contentPhoto">';
+                    showFirstPlaceImage($id);
+                    echo '</div>';
+                    echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
+                    echo '<br>'.'</br>';
+                    echo '<br>'.'</br>';
+                    echo "<h4> Address:</h4>";
+                    echo "<h1>".$placeAddress."</h1>";
+                    echo '<br>'.'</br>';
+                    echo "<h4> Description:</h4>";
+                    echo "<h1>".$placeDescription."</h1>";
+                    echo '</div>';
+                    echo '<div class="row">';
+                    echo "<h4> Price:</h4>";
+                    $temp = ' - ';
+                    echo '<h1>'.$placePrice."€".'</h1>';
+                    printStarsRating($restRating);
+                    echo '<br>'.'</br>';
+                    echo '</div>';
+                    echo "</div>";
+                }
             }
             ?>
 
