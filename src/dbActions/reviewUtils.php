@@ -110,7 +110,7 @@ function getAllCommentsOfReview($idRev)
 
     $statement = $db->prepare('SELECT * FROM COMMENTS WHERE idReview = ? ');
     $statement->execute([$idRev]);
-
+    
     while ($row = $statement->fetch()) {
         echo '<p>' . $row['text'] . '</p>';
         echo '<p>' . $row['date'] . '</p>';
