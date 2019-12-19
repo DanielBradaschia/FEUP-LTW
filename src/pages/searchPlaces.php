@@ -7,6 +7,7 @@
 
     include_once "header.php";
     include_once "../dbActions/placeUtils.php";
+    include_once "../dbActions/rentUtils.php";
     $place = "";
     $moveIn = "";
     $moveOut = "";
