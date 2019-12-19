@@ -156,7 +156,7 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                         echo '</div>';
                         echo '<div class="related">';
                         
-                        if($i != 0 && !($i % 3))
+                        if($i != 0 && !($i % 3) && $i < count($result))
                         {
                             $row = $result[$i];
                             echo "<div class=\"container\">";
