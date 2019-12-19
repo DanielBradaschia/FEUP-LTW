@@ -25,7 +25,7 @@
         $moveIn = $_GET['movein'];
     }
     if(!empty($_GET['moveout'])){
-        $moveIn = $_GET['moveout'];
+        $moveOut = $_GET['moveout'];
     }
     if(!empty($_GET['place'])){
         if (preg_match("/[a-zA-Z]/", $_GET['place'])) {
@@ -50,6 +50,11 @@
     if(!empty($_GET['rateMin'])){
         if (preg_match("/[a-zA-Z0-9]/", $_GET['rateMin'])) {
             $rating = $_GET['rateMin'];
+        }
+    }
+    if(!empty($_GET['rateMax'])){
+        if (preg_match("/[a-zA-Z0-9]/", $_GET['rateMax'])) {
+            $rating = $_GET['rateMax'];
         }
     }
     if(!empty($_GET['rateMax'])){
@@ -89,7 +94,6 @@
             <?php
             $result = getPlace($place, $priceMin, $priceMax, $rateMin, $rateMax, $location);
             foreach ($result as $row) {
-                echo "<div class=\"container\">";
 
                 $placeTitle = $row['title'];
                 $placeAddress = $row['address'];
@@ -98,6 +102,22 @@
                 $restRating = $row['rate'];
                 $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
 
+                $check = true;
+                $rent = getRentsByProperty($id);
+
+                foreach ($rent as $row) {
+                    $checkin = $row['moveIn'];
+                    $checkout = $row['moveOut'];
+
+                    if($checkin <= $moveOut && $checkout > $moveIn){
+                        $check = false;
+                        break;
+                    }
+                }
+
+                if($check == true){
+                
+                echo "<div class=\"container\">";
                 echo '<div class="row">';
 
                 echo '<div class="contentPhoto">';
@@ -120,6 +140,7 @@
                 echo '<br>'.'</br>';
                 echo '</div>';
                 echo "</div>";
+                }
             }
             ?>
 

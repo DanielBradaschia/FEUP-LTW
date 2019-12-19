@@ -1,5 +1,6 @@
 <?php
 include_once('config.php');
+include_once('rentUtils.php');
 
 function placeAlreadyExists($address){
     global $db;
@@ -149,8 +150,8 @@ function getPlace($name, $priceMin, $priceMax, $rateMin, $rateMax, $location)
     $stmt = $db->prepare("SELECT * FROM PROPERTY WHERE title LIKE ? AND address LIKE ? AND (price BETWEEN ? AND ?) AND (rate BETWEEN ? AND ?)");
     //$stmt = $db->prepare("SELECT * FROM PROPERTY WHERE price BETWEEN ? AND ?;");
     $stmt->execute([$namestring, $locationstring, $priceMin, $priceMax, $rateMin, $rateMax]);
-
     return $stmt->fetchAll();
+
 }
 
 function setURL($name, $priceMin, $priceMax, $rating, $location)
