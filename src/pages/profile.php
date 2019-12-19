@@ -99,11 +99,12 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                                 $checkin = $row['moveIn'];
                                 $checkout = $row['moveOut'];
                                 echo '<div class="placeList">';
-                                echo $title;
-                                echo ' ';
-                                echo $checkin;
-                                echo ' ';
-                                echo $checkout;
+                                echo 'Place: '.$title;
+                                echo '<br>';
+                                echo 'Check In: '.$checkin;
+                                echo '<br>';
+                                echo 'Check Out: '.$checkout;
+                                echo '<hr>';
                                 echo '</div>';
                                 }
                         echo '</div>';
