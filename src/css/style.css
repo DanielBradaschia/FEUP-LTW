@@ -1317,7 +1317,6 @@ Search Form
 .owned {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center !important;
   width: 70%;
   padding: 0 1em;
 }
@@ -1326,6 +1325,7 @@ Search Form
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  margin: 0.5em 0;
  }
 
 .owned .container {

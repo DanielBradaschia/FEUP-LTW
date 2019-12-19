@@ -89,8 +89,11 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
                 
                     echo '<div class="container">';
                         echo '<div class="userRest">';
-                            echo '<h1 id="editProfile" style="text-align: center">Your Rents</h1>';
                             $rent = getRentsByUser(getUserInfoByUserName($username, 'idUser'));
+                            if(!count($rent))
+                                echo '<h1 id="editProfile" style="text-align: center">No Rents Yet</h1>';
+                            else
+                                echo '<h1 id="editProfile" style="text-align: center">Your Rents</h1>';    
                             foreach ($rent as $row) {
                                 $title = getPropertyInfoById($row['idProperty'], 'title');
                                 $checkin = $row['moveIn'];
@@ -111,42 +114,82 @@ $cellphone = getUserInfoByUserName($username, 'cellphone');
         </div>
     </div>
     <div class="owned">
-        <div class="related">
             <?php
                 if ($type == 'Owner') {
                     $result = getPlaceByOwnerId(getUserInfoByUserName($username, 'idUser'));
-                    foreach ($result as $row) {
-                        echo "<div class=\"container\">";
+                
+                    echo '<div class="related">';
+                    for($i = 0; $i < count($result); $i++)
+                    {
+                        for(;($i==0 || ($i % 3)) && $i < count($result); $i++) {
+                            $row = $result[$i];
+                            echo "<div class=\"container\">";
 
-                        $placeTitle = $row['title'];
-                        $placeAddress = $row['address'];
-                        $placePrice = $row['price'];
-                        $placeDescription = $row['description'];
-                        $restRating = $row['rate'];
-                        $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
+                            $placeTitle = $row['title'];
+                            $placeAddress = $row['address'];
+                            $placePrice = $row['price'];
+                            $placeDescription = $row['description'];
+                            $restRating = $row['rate'];
+                            $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
 
-                        echo '<div class="row">';
+                            echo '<div class="row">';
 
-                        echo '<div class="contentPhoto">';
-                        showFirstPlaceImage($id);
+                            echo '<div class="contentPhoto">';
+                            showFirstPlaceImage($id);
+                            echo '</div>';
+                            echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
+
+                            echo "<h4> Address:</h4>";
+                            echo "<h1>".$placeAddress."</h1>";
+
+                            echo "<h4> Description:</h4>";
+                            echo "<h1>".$placeDescription."</h1>";
+                            echo '</div>';
+                            echo '<div class="row">';
+                            echo "<h4> Price: ".$placePrice."€</h4>";
+                            printStarsRating($restRating);
+
+                            echo '</div>';
+                            echo "</div>";
+                        }
+
                         echo '</div>';
-                        echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
+                        echo '<div class="related">';
+                        
+                        if($i != 0 && !($i % 3))
+                        {
+                            $row = $result[$i];
+                            echo "<div class=\"container\">";
 
-                        echo "<h4> Address:</h4>";
-                        echo "<h1>".$placeAddress."</h1>";
+                            $placeTitle = $row['title'];
+                            $placeAddress = $row['address'];
+                            $placePrice = $row['price'];
+                            $placeDescription = $row['description'];
+                            $restRating = $row['rate'];
+                            $id = getPropertyInfoByAddress($placeAddress, 'idProperty');
 
-                        echo "<h4> Description:</h4>";
-                        echo "<h1>".$placeDescription."</h1>";
-                        echo '</div>';
-                        echo '<div class="row">';
-                        echo "<h4> Price: ".$placePrice."€</h4>";
-                        $temp = ' - ';
-                        printStarsRating($restRating);
+                            echo '<div class="row">';
 
-                        echo '</div>';
-                        echo "</div>";
+                            echo '<div class="contentPhoto">';
+                            showFirstPlaceImage($id);
+                            echo '</div>';
+                            echo "<h2 onclick=\"location.href='place.php?id=$id';\">" . $placeTitle . "</h2>";
+
+                            echo "<h4> Address:</h4>";
+                            echo "<h1>".$placeAddress."</h1>";
+
+                            echo "<h4> Description:</h4>";
+                            echo "<h1>".$placeDescription."</h1>";
+                            echo '</div>';
+                            echo '<div class="row">';
+                            echo "<h4> Price: ".$placePrice."€</h4>";
+                            printStarsRating($restRating);
+
+                            echo '</div>';
+                            echo "</div>";
+                        }
                     }
-
+                    echo '</div>';
                 }
         
                 ?>
