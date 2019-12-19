@@ -15,12 +15,6 @@ $payment = htmlspecialchars($_POST['payment']);
 $idProperty = htmlspecialchars($_SESSION['restID']);
 $price = getPropertyInfoById($idProperty, 'price');
 
-/*if ($_SESSION['signup-token'] !== $_POST['signup-token']) {
-    header('HTTP/1.0 403 Forbidden');
-    die();
-}
-$_SESSION['token'] = generate_random_token();*/
-
 if($moveIn && $moveOut){
     if($moveIn < $moveOut){
         if($payment != 'Select'){
@@ -41,25 +35,6 @@ else {
         $_SESSION["ERROR"] = "Please select Check in date and Check out date";
 }
 
-/*if($email && $password){
-    if(!usernameAlreadyExists($email)){
-        if(validatePassword($password))
-            signUp($email, $name, $type, $password, $gender, $bithdate, $cellphone);
-        else {
-            header("Location:".$_SERVER['HTTP_REFERER']."");
-            $_SESSION["ERROR"] = "Password must be at least 6 characters.";
-        }
-    }
-    else {
-        header("Location:".$_SERVER['HTTP_REFERER']."");
-        $_SESSION["ERROR"] = "Choose a different email address. This one is not available. If this is you log in now.";
-    }
-}
-else{
-    header("Location:".$_SERVER['HTTP_REFERER']."");
-    $_SESSION["ERROR"] = "You must fill at least Email and Password Field ! ";
-}*/
-
 function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
     global $db;
 
@@ -71,7 +46,7 @@ function rent($idUser, $idProperty, $moveIn, $moveOut, $payment, $price){
         $checkin = $row['moveIn'];
         $checkout = $row['moveOut'];
 
-        if($checkin <= $moveOut && $checkout >= $moveIn){
+        if($checkin <= $moveOut && $checkout > $moveIn){
             $check = false;
             break;
         }
