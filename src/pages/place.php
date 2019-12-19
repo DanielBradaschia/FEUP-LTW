@@ -3,6 +3,7 @@
 //session_regenerate_id(true);
 ?>
     <!DOCTYPE html>
+    <title>Welcom to...</title>
     <?php
     $title = "Welcome";
     include_once "header.php";

@@ -3,6 +3,7 @@
 //session_regenerate_id(true);
 ?>
 <!DOCTYPE html>
+    <title>Searching</title>
     <?php
 
     include_once "header.php";
