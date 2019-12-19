@@ -2101,7 +2101,6 @@ xcustom form elements
   background-color: rgb(178, 202, 247);
 }
 
-
 .addPlaceForm button,
 .addPlaceForm input[type="submit"],
 .addPlaceForm input[type="button"] {
@@ -2126,6 +2125,26 @@ xcustom form elements
 /* --------------------------------
 Place Page
 -------------------------------- */
+
+.rent .rent-button{
+    background: #34495E;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-bottom: 3px solid #5994FF;
+  border-radius: 3px;
+  color: #F3F3F3;
+  text-align: center;
+}
+
+#button-add:hover,
+.rent button:hover,
+.rent input[type="submit"]:hover,
+.rent input[type="button"]:hover {
+  background: #6B9FFF;
+  color: #F3F3F3;
+  text-align: center;
+}
+
 
 .placePage {
   display: flex;
