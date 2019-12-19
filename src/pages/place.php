@@ -9,6 +9,7 @@
     include_once "../dbActions/placeUtils.php";
     include_once "../dbActions/user.php";
     include_once "../dbActions/reviewUtils.php";
+    include_once "../dbActions/rentUtils.php";
     $_SESSION['token'] = generate_random_token();
     $id = $_GET["id"];
     $userId = "";
@@ -178,6 +179,22 @@
                             echo '<form class="removePlace" action="../dbActions/removePlace.php" method="post">';
                             echo '<button type="submit" name="deleteItem" value="'.$id.'">Delete Place</button>';
                             echo '</form>';
+                            
+                            echo '<br>';
+                            echo '<p class="boxTitle">Your Rents:</p>';
+                            $rent = getRentsByProperty($id);
+                            foreach ($rent as $row) {
+                                $email = getUserInfo($row['idUser'], 'email');
+                                $checkin = $row['moveIn'];
+                                $checkout = $row['moveOut'];
+                                echo '<div class="placeList">';
+                                echo $email;
+                                echo ' ';
+                                echo $checkin;
+                                echo ' ';
+                                echo $checkout;
+                                echo '</div>';
+                                }
                         }
                     ?>
                 </div>
