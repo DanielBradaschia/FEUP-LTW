@@ -3,7 +3,7 @@
 //session_regenerate_id(true);
 ?>
     <!DOCTYPE html>
-    <title>Welcom to...</title>
+    <title>Welcome to...</title>
     <?php
     $title = "Welcome";
     include_once "header.php";
@@ -189,13 +189,14 @@
                                 $checkin = $row['moveIn'];
                                 $checkout = $row['moveOut'];
                                 echo '<div class="placeList">';
-                                echo $email;
-                                echo ' ';
-                                echo $checkin;
-                                echo ' ';
-                                echo $checkout;
+                                echo 'User: '.$email;
+                                echo '<br>';
+                                echo 'Moves In: '.$checkin;
+                                echo '<br>';
+                                echo 'Moves Out: '.$checkout;
+                                echo '<hr>';
                                 echo '</div>';
-                                }
+                             }
                         }
                     ?>
                 </div>
